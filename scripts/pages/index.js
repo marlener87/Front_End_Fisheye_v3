@@ -29,8 +29,10 @@ function displayPhotographers(objectPhotographers) {
     divCard.classList.add("card");
 
     divCard.innerHTML = `
-        <a href="#" class="lienPhotographe"><img src="../assets/photographersIDPhotos/${item.portrait} " alt="${item.name}" class="portrait">
-        <h2 class="name">${item.name}</h2></a>
+        <a href="photographer.html?id=${item.id}" class="lienPhotographe">
+          <img src="../assets/photographersIDPhotos/${item.portrait} " alt="${item.name}" class="portrait">
+          <h2 class="name">${item.name}</h2>
+        </a>
         <p class="localisation">${item.city}, ${item.country}</p>
         <p class="tagline">${item.tagline}</p>
         <p class="price">${item.price}€/jour</p>

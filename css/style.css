@@ -129,3 +129,60 @@ p {
 .userTagline {
     color: grey;
 }
+
+.tri {
+    margin: 20px 100px;
+}
+
+.orderBy {
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+.select{
+   background-color: #901C1C; 
+   border-color: #901C1C;
+   color: white;
+   border-radius: 5px;
+   height: 40px;
+   width: 110px;
+   padding: 10px;
+}
+
+/* .select:focus-visible {
+    border-color: #901C1C;
+} */
+
+option {
+    padding: 10px;
+} 
+
+.encart {
+    display: flex;
+    justify-content: space-between;
+    background-color: #DB8876;
+    width: 200px;
+    padding: 10px 30px;
+    position: fixed;
+    bottom: 0;
+    right: 35px;
+    font-weight: bold;
+}
+
+.totalLikes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.numberLike {
+    padding-right: 5px;
+}
+
+.fa-regular {
+    color: #901C1C;
+}
+
+.fa-solid {
+    color: #901C1C;
+}

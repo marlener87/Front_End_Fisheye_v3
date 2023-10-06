@@ -1,11 +1,9 @@
 //Mettre le code JavaScript lié à la page photographer.html
-
 //const photographerID = 930; // Simulation de l'ID de la page de Mimi Keel
-//const photographerID = "";
 const photographerHeader = document.querySelector(".photograph-header");
-
 const url = new URL(document.location.href);
 const photographerID = parseInt(url.searchParams.get("id"));
+const mediaPhotos = document.querySelector("#mediaPhotos");
 
 // Function pour récupérer avec un fetch (attention await/async) les données de tous les photographes
 // Au lieu de retourner tous les photographes, retourne uniquement celui qui à le bon ID photographerID
@@ -610,31 +608,30 @@ async function getPhotographer() {
     return res.json();
   });
 
-  let photographer = null;
+  let photographer = null; // c'est un objet
   results.photographers.forEach((item) => {
     if (item.id === photographerID) {
       photographer = item;
     }
   });
 
-  let medias = [];
+  let medias = []; // c'est un tableau
   results.media.forEach((itemMedia) => {
     if (itemMedia.photographerId === photographerID) {
       medias.push(itemMedia);
     }
   });
 
-  return { photographer, medias };
+  let likes = 0;
+  for (let i = 0; i < medias.length; i++) {
+    console.log(i);
+  }
+
+  return { photographer, medias, likes };
   //return result;
 }
 
-// * fonction displayPhotographer
-
-// * se faire une const medias = [.....]
-
 // fonction get medias
-
-// fonction displayMedia
 
 function displayPhotographer(insertPhotographer) {
   // insertPhotographer.photographers.forEach((item) => {
@@ -665,9 +662,48 @@ function displayPhotographer(insertPhotographer) {
   //});
 }
 
-// function displayMedia(photoMedia) {
-//     photoMedia.
+// function displayMedias(photoMedia) {
+//   const divInsert = document.createElement("div");
+//   divInsert.classList.add("cardPhoto");
+
+//   divInsert.innerHTML = `
+//     <img src="./FishEye_Photos/${photographerID.id}/${photoMedia.image}" alt="">
+//   `;
+//   console.log(divInsert);
+//   mediaPhotos.appendChild(divInsert);
+//   //  photoMedia.
 // }
+
+function displayMedias(medias) {
+  // parcours tous les médias, une boucle
+  medias.forEach((media) => {
+    const cardPhoto = document.createElement("div");
+    cardPhoto.classList.add("cardPhoto");
+
+    cardPhoto.innerHTML = `
+    <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="" id="photo">
+    <div class="infoPhoto">
+      <p id="titre">${media.title}</p>
+      <p id="likes">${media.likes}</p>
+    </div> `;
+
+    mediaPhotos.appendChild(cardPhoto);
+  });
+
+  //   je parcours la liste des medias
+  //     je prends les likes de chaque media
+  //     je les additionne
+  // };
+
+  //photo.src = `./FishEye_Photos/${photographerID}/${photoMedia.id}`;
+
+  //titre.innerHTML = photoMedia.title;
+  //likes.innerHTML = photoMedia.likes;
+}
+
+function displayLikes(likes) {
+  // afficher le likes dans le DOM
+}
 
 async function init() {
   //const object = await getPhotographer();
@@ -680,9 +716,11 @@ async function init() {
   //displayPhotographer(photographer);
   //displayMedias(medias);
 
-  const { photographer, medias } = await getPhotographer();
+  const { photographer, medias, likes } = await getPhotographer();
+
   displayPhotographer(photographer);
   displayMedias(medias);
+  displayLikes(likes);
 }
 
 init();

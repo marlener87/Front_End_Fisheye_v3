@@ -5,6 +5,10 @@ body {
     margin: 0;
 }
 
+body.isModalOpen {
+    overflow: hidden;
+}
+
 
 header {
     display: flex;
@@ -168,6 +172,22 @@ p {
     border: none;
 }
 
+.btnLike .fa-regular {
+    display: block;
+}
+
+.btnLike .fa-solid {
+    display: none;
+}
+
+.btnLike.isLiked .fa-regular {
+    display: none;
+}
+
+.btnLike.isLiked .fa-solid {
+    display: block;
+}
+
 .card-likes {
     color: #901C1C;
     font-weight: 700;
@@ -202,10 +222,12 @@ option {
 
 .fa-regular {
     color: #901C1C;
+    font-size: 16px;
 }
 
 .fa-solid {
     color: #901C1C;
+    font-size: 16px;
 }
 
 .mediaPhotos {

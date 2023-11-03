@@ -9,7 +9,8 @@
     <title>Fisheye - photographe </title>
   </head>
 
-  <body class="isModalOpen">
+  <!--<body class="isModalOpen">-->
+  <body>
     <header>
      <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a> 
     </header>
@@ -69,26 +70,31 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" class="close"/>
+          <img src="assets/icons/close.svg" class="close"/>
         </header>
 				<form class="openForm" id="openForm">
 					<div>
-          <label for="firstName">Prénom</label>
-          <input type="text" id="firstName" name="firstName" />
-        </div>
-        <div>
-          <label for="lastName">Nom</label>
-          <input type="text" id="lastName" name="lastName" />
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" />
-        </div>
-        <div>
-          <label for="message">Votre message</label>
-          <textarea name="message" id="message" cols="100" rows="10"></textarea>
-        </div>
-          <button class="contact_button btnClose">Envoyer</button>
+            <label for="firstName">Prénom</label>
+            <input type="text" id="firstName" name="firstName" />
+            <span class="error" id="firstNameError"></span>
+          </div>
+          <div>
+            <label for="lastName">Nom</label>
+            <input type="text" id="lastName" name="lastName" />
+            <span class="error" id="lastNameError"></span>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" />
+            <span class="error" id="emailError"></span>
+          </div>
+          <div>
+            <label for="message">Votre message</label>
+            <textarea name="message" id="message" cols="100" rows="10"></textarea>
+            <span class="error" id="messageError"></span>
+          </div>
+          <button class="contact_button btnClose" id="button">Envoyer</button>
+          <span class="error" id="btnError"></span>
 				</form>
 			</div>
 		</div>

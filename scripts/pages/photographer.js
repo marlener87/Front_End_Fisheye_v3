@@ -88,13 +88,13 @@ function displayMedias(medias) {
     <div class="infoPhoto">
       <p id="titre">${media.title}</p>
       <div class="likes">
+        <span class="card-likes" data-id="${media.id}">${media.likes}</span>
         <button class="btnLike ${media.isLiked ? "isLiked" : ""}" data-id="${
       media.id
     }">
-          <span class="card-likes" data-id="${media.id}">${media.likes}</span>
+          <i class="fa-regular fa-heart"></i>
+          <i class="fa-solid fa-heart"></i>
         </button>
-        <i class="fa-regular fa-heart"></i>
-        
       </div>
     </div> `;
 
@@ -106,25 +106,48 @@ function displayMedias(medias) {
     );
 
     btn.addEventListener("click", () => {
-      const heartFull = document.querySelector(".fa-regular");
+      /* faire la trace
+      media.isLiked = false;
+      media.likes = 88;
+      button = ".btnLike";
+      cardLikes.innerHTML = media.likes  = 88
+
+      media.isLiked = true;
+      media.likes = 88;
+      button = ".btnLike .isLiked";
+      cardLikes.innerHTML = media.likes + 1 = 89
+
+      media.isLiked = false;
+      media.likes = 88;
+      button = ".btnLike";
+      cardLikes.innerHTML = media.likes  = 88
+      */
       media.isLiked = !media.isLiked;
-      cardLikes.innerHTML = media.isLiked ? media.likes + 1 : media.likes;
+      // c'est une ternaire
+      //cardLikes.innerHTML = media.isLiked ? media.likes + 1 : media.likes;
+      if (media.isLiked) {
+        cardLikes.innerHTML = media.likes + 1;
+      } else {
+        cardLikes.innerHTML = media.likes;
+      }
+
+      /*
+      if(media.isLiked === true) équivaut à if(media.isLiked)
+      if(media.isLiked === false) équivaut à if(!media.isLiked)
+      */
 
       if (media.isLiked === true) {
-        heartFull.classList.toggle("fa-solid");
+        if (btn.classList.contains("isLiked") === false) {
+          btn.classList.add("isLiked");
+        }
+      } else {
+        btn.classList.remove("isLiked");
       }
+      //btn.classList.toggle("isLiked");
 
       displayLikes(medias);
     });
   });
-
-  /* <i class="fa-solid fa-heart"></i>
-
-<svg width="18" height="18" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z"
-      fill="#911C1C" />
-</svg> */
 
   //   je parcours la liste des medias
   //     je prends les likes de chaque media
@@ -168,20 +191,29 @@ function displayLikes(medias) {
 //   element.remove();
 // }
 
-function orderBy() {
-  const orderByPopularity = document.querySelector(".popularity");
-  const orderByDate = document.querySelector(".date");
-  const orderByTitle = document.querySelector(".title");
-  //console.log(orderByTitle);
+let orderByType = "title";
+function orderBy(mediasToSort) {
+  // const orderByPopularity = document.querySelector(".popularity");
+  // const orderByDate = document.querySelector(".date");
+  // const orderByTitle = document.querySelector(".title");
+  // //console.log(orderByTitle);
 
-  orderByTitle.addEventListener("click", () => {
-    const element = document.getElementById("titre");
+  // orderByTitle.addEventListener("click", () => {
+  //   const element = document.getElementById("titre");
 
-    //element.remove();
-    element.sort();
-    console.log(element);
-    document.getElementById("titre");
-  });
+  //   //element.remove();
+  //   element.sort();
+  //   console.log(element);
+  //   document.getElementById("titre");
+  // });
+
+  //const mediasSorted = [];
+  const mediasSorted = mediasToSort;
+
+  // to do
+  // trier mediasToSort en fonction de orderByType (par défaut title)
+  // mettre le résultat dans mediasSorted
+  return mediasSorted;
 }
 
 async function init() {
@@ -196,11 +228,10 @@ async function init() {
   //displayMedias(medias);
 
   const { photographer, medias } = await getPhotographer();
-
+  const newMedias = orderBy(medias);
   displayPhotographer(photographer);
-  displayMedias(medias);
-  displayLikes(medias);
-  orderBy(medias);
+  displayMedias(newMedias);
+  displayLikes(newMedias);
 }
 
 init();

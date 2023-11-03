@@ -33,7 +33,7 @@ function closeModal() {
   const openForm = document.querySelector("#openForm");
   openForm.classList.remove("hidden");
 
-  const closeForm = document.querySelector("#closeForm");
+  const closeForm = document.querySelector(".close");
   closeForm.classList.remove("active");
 
   const myBody = document.querySelector("body");
@@ -173,7 +173,7 @@ btnSubmitValidationForm.addEventListener("click", (event) => {
     const openForm = document.querySelector("#openForm");
     openForm.classList.add("hidden");
 
-    const closeForm = document.querySelector("#closeForm");
+    const closeForm = document.querySelector(".close");
     closeForm.classList.add("active");
 
     resetMyForm();

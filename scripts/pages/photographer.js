@@ -191,7 +191,12 @@ function displayLikes(medias) {
 //   element.remove();
 // }
 
-let orderByType = "title";
+//let orderByType = "popularity"; // fonctionne
+//let orderByType = "title"; // fonctionne
+let orderByType = "date"; // fonctionne
+
+// la fonction orderBy prend un tableau en paramètre
+// cette fonction est censée retourner un tableau de médias triés
 function orderBy(mediasToSort) {
   // const orderByPopularity = document.querySelector(".popularity");
   // const orderByDate = document.querySelector(".date");
@@ -212,9 +217,67 @@ function orderBy(mediasToSort) {
 
   // to do
   // trier mediasToSort en fonction de orderByType (par défaut title)
+  mediasToSort.sort(function (a, b) {
+    if (orderByType === "title") {
+      if (a.title > b.title) {
+        return 1;
+      }
+      if (a.title < b.title) {
+        return -1;
+      }
+      return 0;
+      //return a.title - b.title;
+    }
+
+    if (orderByType === "date") {
+      // comparaison de a.date et de b.date il faut les transformer en objet date
+      //const dateA = new Date(a.date);
+      //const dateB = new Date(b.date);
+
+      //return dateA - dateB;
+      if (a.date > b.date) {
+        return 1;
+      }
+      if (a.date < b.date) {
+        return -1;
+      }
+      return 0;
+    }
+
+    if (orderByType === "popularity") {
+      return a.likes - b.likes;
+    }
+  });
   // mettre le résultat dans mediasSorted
   return mediasSorted;
 }
+
+const btnSortByTitle = document.querySelector(".title");
+btnSortByTitle.addEventListener("click", () => {
+  const { medias } = getPhotographer();
+
+  const newMedias = orderBy(medias, "title");
+
+  displayMedias(newMedias);
+});
+
+const btnSortByDate = document.querySelector(".date");
+btnSortByDate.addEventListener("click", () => {
+  const { medias } = getPhotographer();
+
+  const newMedias = orderBy(medias, "date");
+
+  displayMedias(newMedias);
+});
+
+const btnSortByPopularity = document.querySelector(".popularity");
+btnSortByPopularity.addEventListener("click", () => {
+  const { medias } = getPhotographer();
+
+  const newMedias = orderBy(medias, "popularity");
+
+  displayMedias(newMedias);
+});
 
 async function init() {
   //const object = await getPhotographer();
@@ -228,7 +291,7 @@ async function init() {
   //displayMedias(medias);
 
   const { photographer, medias } = await getPhotographer();
-  const newMedias = orderBy(medias);
+  const newMedias = orderBy(medias); // va trier le tableau des médias
   displayPhotographer(photographer);
   displayMedias(newMedias);
   displayLikes(newMedias);

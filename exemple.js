@@ -50,6 +50,15 @@ btnSortByDate.addEventListener("click", () => {
   displayMedias(newMedias);
 });
 
+const btnSortByPopularity = document.querySelector(".popularity");
+btnSortByPopularity.addEventListener("click", () => {
+  const { medias } = getPhotographers();
+
+  const newMedias = orderBy(medias, "popularity");
+
+  displayMedias(newMedias);
+});
+
 function init() {
   // on récupère un tableau de médias non trié
   const { medias } = getPhotographers();

@@ -12,7 +12,7 @@ const message = document.querySelector("#message");
 
 let input = document.querySelectorAll("input");
 // création de la variable qui récupère les données de l'input
-let inputValue = "";
+//let inputValue = "";
 
 let btnSubmitValidationForm = document.querySelector("#button");
 let inputFirst = document.querySelector("#firstName");
@@ -160,15 +160,11 @@ btnSubmitValidationForm.addEventListener("click", (event) => {
   const isMessageIsValid = checkInputValidationMessage();
   console.log(isMessageIsValid);
 
-  // const isMyButtonIsValid = checkCheckboxIsTick();
-  // console.log(isMyButtonIsValid);
-
   if (
     isFirstNameIsValid.isInputValid &&
     isLastNameIsValid.isInputValid &&
     isEmailIsValid.isInputValid &&
     isMessageIsValid.isInputValid
-    //isMyButtonIsValid
   ) {
     const openForm = document.querySelector("#openForm");
     openForm.classList.add("hidden");

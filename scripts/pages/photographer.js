@@ -193,7 +193,25 @@ function displayLikes(medias) {
 
 //let orderByType = "popularity"; // fonctionne
 //let orderByType = "title"; // fonctionne
-let orderByType = "date"; // fonctionne
+//let orderByType = "date"; // fonctionne
+
+// si on clique sur une option, ce que l'on a choisi s'affiche dans le <p>
+
+let orderByType = document.querySelector("#orderBy");
+orderByType.addEventListener("change", (e) => {
+  e.preventDefault();
+
+  const result = document.querySelector("#demo");
+  result.textContent = `Vous avez choisi ${e.target.value}`;
+  console.log(e.target.value);
+  //return orderByType;
+});
+
+// function sort() {
+//   let sortValue = document.getElementById("orderBy").value;
+//   return sortValue;
+// }
+// console.log(sort());
 
 // la fonction orderBy prend un tableau en paramètre
 // cette fonction est censée retourner un tableau de médias triés
@@ -231,21 +249,21 @@ function orderBy(mediasToSort) {
 
     if (orderByType === "date") {
       // comparaison de a.date et de b.date il faut les transformer en objet date
-      //const dateA = new Date(a.date);
-      //const dateB = new Date(b.date);
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
 
-      //return dateA - dateB;
-      if (a.date > b.date) {
-        return 1;
-      }
-      if (a.date < b.date) {
-        return -1;
-      }
-      return 0;
+      return dateA - dateB;
+      // if (dateA.date > dateB.date) {
+      //   return 1;
+      // }
+      // if (dateA.date < dateB.date) {
+      //   return -1;
+      // }
+      // return 0;
     }
 
     if (orderByType === "popularity") {
-      return a.likes - b.likes;
+      return parseInt(a.likes) - parseInt(b.likes);
     }
   });
   // mettre le résultat dans mediasSorted

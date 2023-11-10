@@ -34,8 +34,8 @@
     <div class="tri">
       <!--<p class="orderBy">Trier par</p>-->
       <label for="orderBy" class="orderBy">Trier par</label>
-      <select name="orderBy" id="orderBy" class="select" >
-        <!-- onchange="orderBy()"-->
+      <select name="orderBy" id="orderBy" class="select">
+        <!-- onchange="orderBy()" onchange="sort()" -->
         <option value="popularite" class="popularity">Popularité</option>
         <option value="date" class="date">Date</option>
         <option value="titre" class="title">Titre</option>
@@ -93,7 +93,8 @@
             <textarea name="message" id="message" cols="100" rows="10"></textarea>
             <span class="error" id="messageError"></span>
           </div>
-          <button class="contact_button btnClose" id="button">Envoyer</button>
+          <!--<button class="contact_button btnClose" id="button">Envoyer</button>-->
+          <input class="contact_button btnClose" type="submit" id="button" value="Envoyer" formnovalidate="formnovalidate" />
           <span class="error" id="btnError"></span>
 				</form>
 			</div>

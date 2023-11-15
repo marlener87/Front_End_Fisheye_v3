@@ -69,3 +69,28 @@ function init() {
   // Affichage à l'écran du tableau trié newMedias
   displayMedias(newMedias);
 }
+
+/*
+
+1) Faire le dropdown
+modifier le JS
+--- 
+
+1)
+- Au clic sur une image d'un média, ouvrir le carrousel 
+- Dans le carrousel avoir toutes les images + titres et pouvoir les faire défiler au clic sur la flèche gauche et droite
+- Bouton de fermeture du carrousel 
+- carrousel avec une boucle infinie 
+
+2) 
+- Au clic, sur umage d'un média, ouvrir cette fois le carrousel positionné sur la bonne image
+- même comportement que le niveau 1
+
+3) 
+- à chaque fois que tu utilises le dropdown, réinitialiser + recharger dans le carrousel les images dans le bon ordre
+
+4) 
+- permettre dans la liste des médias d'avoir une vidéo à la place d'une image (pas de controls sur la vidéo - static)
+- remplacer aussi dans le carrousel la vidéo (pouvoir avoir les controls avec play, restart, ...)
+
+*/

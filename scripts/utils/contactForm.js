@@ -38,6 +38,8 @@ function closeModal() {
 
   const myBody = document.querySelector("body");
   myBody.classList.remove("isModalOpen");
+
+  resetMyForm();
 }
 
 /**
@@ -139,7 +141,8 @@ function resetMyForm() {
 
 // EVENTS
 // creation of the button variable
-btnSubmitValidationForm.addEventListener("click", (event) => {
+const openForm = document.querySelector("#openForm");
+openForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const error = document.querySelector("#btnError");

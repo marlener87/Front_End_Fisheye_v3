@@ -76,6 +76,9 @@ function displayPhotographer(insertPhotographer) {
 // }
 
 function displayMedias(medias) {
+  // Réinitialise l'affichage
+  mediaPhotos.innerHTML = "";
+
   // parcours tous les médias, une boucle
   medias.forEach((media) => {
     const cardPhoto = document.createElement("div");
@@ -191,20 +194,46 @@ function displayLikes(medias) {
 //   element.remove();
 // }
 
-//let orderByType = "popularity"; // fonctionne
+let orderByType = "popularity"; // fonctionne
 //let orderByType = "title"; // fonctionne
 //let orderByType = "date"; // fonctionne
 
 // si on clique sur une option, ce que l'on a choisi s'affiche dans le <p>
 
-let orderByType = document.querySelector("#orderBy");
-orderByType.addEventListener("change", (e) => {
-  e.preventDefault();
+// let orderByTypeSelect = document.querySelector("#orderBy");
+// orderByTypeSelect.addEventListener("change", async (e) => {
+//   e.preventDefault();
 
-  const result = document.querySelector("#demo");
-  result.textContent = `Vous avez choisi ${e.target.value}`;
-  console.log(e.target.value);
-  //return orderByType;
+//   // Change le type de tri
+//   orderByType = e.target.value;
+
+//   // récupère les médias = simulation de l'API
+//   const { medias } = await getPhotographer();
+
+//   // va trier le tableau des médias avec le new orderByType
+//   const newMedias = orderBy(medias);
+
+//   // Affichage des médias triés
+//   displayMedias(newMedias);
+
+//   //return orderByType;
+// });
+const btnList = document.querySelectorAll(".btnSelect");
+btnList.forEach((btn) => {
+  btn.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    orderByType = btn.getAttribute("data-value");
+
+    // récupère les médias = simulation de l'API
+    const { medias } = await getPhotographer();
+
+    // va trier le tableau des médias avec le new orderByType
+    const newMedias = orderBy(medias);
+
+    // Affichage des médias triés
+    displayMedias(newMedias);
+  });
 });
 
 // function sort() {
@@ -252,14 +281,14 @@ function orderBy(mediasToSort) {
       const dateA = new Date(a.date);
       const dateB = new Date(b.date);
 
-      return dateA - dateB;
-      // if (dateA.date > dateB.date) {
-      //   return 1;
-      // }
-      // if (dateA.date < dateB.date) {
-      //   return -1;
-      // }
-      // return 0;
+      //return dateA - dateB;
+      if (dateA > dateB) {
+        return 1;
+      }
+      if (dateA < dateB) {
+        return -1;
+      }
+      return 0;
     }
 
     if (orderByType === "popularity") {
@@ -270,32 +299,32 @@ function orderBy(mediasToSort) {
   return mediasSorted;
 }
 
-const btnSortByTitle = document.querySelector(".title");
-btnSortByTitle.addEventListener("click", () => {
-  const { medias } = getPhotographer();
+// const btnSortByTitle = document.querySelector(".title");
+// btnSortByTitle.addEventListener("click", () => {
+//   const { medias } = getPhotographer();
 
-  const newMedias = orderBy(medias, "title");
+//   const newMedias = orderBy(medias, "title");
 
-  displayMedias(newMedias);
-});
+//   displayMedias(newMedias);
+// });
 
-const btnSortByDate = document.querySelector(".date");
-btnSortByDate.addEventListener("click", () => {
-  const { medias } = getPhotographer();
+// const btnSortByDate = document.querySelector(".date");
+// btnSortByDate.addEventListener("click", () => {
+//   const { medias } = getPhotographer();
 
-  const newMedias = orderBy(medias, "date");
+//   const newMedias = orderBy(medias, "date");
 
-  displayMedias(newMedias);
-});
+//   displayMedias(newMedias);
+// });
 
-const btnSortByPopularity = document.querySelector(".popularity");
-btnSortByPopularity.addEventListener("click", () => {
-  const { medias } = getPhotographer();
+// const btnSortByPopularity = document.querySelector(".popularity");
+// btnSortByPopularity.addEventListener("click", () => {
+//   const { medias } = getPhotographer();
 
-  const newMedias = orderBy(medias, "popularity");
+//   const newMedias = orderBy(medias, "popularity");
 
-  displayMedias(newMedias);
-});
+//   displayMedias(newMedias);
+// });
 
 async function init() {
   //const object = await getPhotographer();

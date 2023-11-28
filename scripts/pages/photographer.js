@@ -5,6 +5,7 @@ const url = new URL(document.location.href);
 const photographerID = parseInt(url.searchParams.get("id"));
 const mediaPhotos = document.querySelector("#mediaPhotos");
 const totalLikesDOM = document.querySelector("#totalLikes");
+const carrouselPhotos = document.querySelector(".containerCarrousel");
 
 // Function pour récupérer avec un fetch (attention await/async) les données de tous les photographes
 // Au lieu de retourner tous les photographes, retourne uniquement celui qui à le bon ID photographerID
@@ -85,22 +86,21 @@ function displayMedias(medias) {
     cardPhoto.classList.add("cardPhoto");
 
     cardPhoto.innerHTML = `
-    <img src="./FishEye_Photos/${photographerID}/${
-      media.image
-    }" alt="" id="photo" class="photo">
+    <button class="imagePhotographe" id="imagePhotographe" onclick="displayCarrousel()">
+      <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="" id="photo" class="photo">
+    </button>
     <div class="infoPhoto">
       <p id="titre">${media.title}</p>
       <div class="likes">
         <span class="card-likes" data-id="${media.id}">${media.likes}</span>
-        <button class="btnLike ${media.isLiked ? "isLiked" : ""}" data-id="${
-      media.id
-    }">
+        <button class="btnLike ${media.isLiked ? "isLiked" : ""}" data-id="${media.id}">
           <i class="fa-regular fa-heart"></i>
           <i class="fa-solid fa-heart"></i>
         </button>
       </div>
-    </div> `;
-
+    </div> 
+    `;
+    //console.log(cardPhoto);
     mediaPhotos.appendChild(cardPhoto);
 
     const btn = document.querySelector(`.btnLike[data-id="${media.id}"]`);
@@ -233,8 +233,18 @@ btnList.forEach((btn) => {
 
     // Affichage des médias triés
     displayMedias(newMedias);
+
+    // document.querySelector(".fa-chevron-up").style.visibility = "visible";
+    // document.querySelector(".fa-chevron-down").style.visibility = "hidden";
   });
 });
+
+// const btnOrderBy = document.querySelector(".btnOrderBy");
+// btnOrderBy.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   document.querySelector(".fa-chevron-down").style.transform = "rotate(180deg)";
+// });
 
 // function sort() {
 //   let sortValue = document.getElementById("orderBy").value;
@@ -326,6 +336,143 @@ function orderBy(mediasToSort) {
 //   displayMedias(newMedias);
 // });
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+// CARROUSEL
+///////////////////////////////////////////////////////////////////////////////////////////////
+// function displayPhotosCarrousel(medias) {
+//   // Réinitialise l'affichage
+//   carrouselPhotos.innerHTML = "";
+
+//   // parcours tous les médias, une boucle
+//   medias.forEach((media) => {
+//     const carrouselPhoto = document.createElement("div");
+//     carrouselPhoto.classList.add("carrouselPhoto");
+
+//     carrouselPhoto.innerHTML = `
+//       <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="" id="carrouselPhoto" class="carrouselPhoto">
+
+//       <div class="infoPhoto">
+//         <p id="carrouselTitre">${media.title}</p>
+//       </div>`;
+//     //console.log(carrouselPhoto);
+//     carrouselPhotos.appendChild(carrouselPhoto);
+//   });
+// }
+  
+// }
+// CARROUSEL BOUTONS NEXT ET PREVIOUS
+const btnSliderNext = document.querySelector(".fa-chevron-right");
+const btnSliderPrevious = document.querySelector(".fa-chevron-left");
+// let slideIndex = 0;
+
+// btnSliderPrevious.addEventListener('click', () => {
+//   //console.log('bonjour');
+//   if(slideIndex > 0) {
+//     slideIndex--;
+//   } else {
+//     slideIndex = medias.length -1;
+//   }
+  
+//   displayPhotosCarrousel(slideIndex);
+// });
+
+// btnSliderNext.addEventListener('click', () => {
+//   //console.log('coucou');
+//   if(slideIndex < medias.length - 1) {
+//     slideIndex++;
+//   } else {
+//     slideIndex = 0;
+//   }
+  
+//   displayPhotosCarrousel(slideIndex);
+// });
+
+
+///////////////// WILLIAM
+// const carrouselImage = document.querySelector(".carrouselImage");
+// const titreImage = document.querySelector(".titreImage");
+
+// //const slide = slides[0];
+
+// function displaySlide(media) {
+//   carrouselImage.src = `./FishEye_Photos/${photographerID}/${media.image}`;
+//   //carrouselImage.setAttribute("src",`./FishEye_Photos/${photographerID}/${media.image}`);
+//   titreImage.innerHTML = `${media.title}`;
+
+//   // carrouselImage.src = "./FishEye_Photos/" + photographerID / media.image;
+//   // //carrouselImage.setAttribute("src",`./FishEye_Photos/${photographerID}/${media.image}`);
+//   // titreImage.innerHTML = media.title;
+// }
+
+
+
+
+
+
+
+
+
+//await fetch("/data/photographers.json").then((res) => {return res.json();});
+
+// console.log(carrouselImage);
+// console.log(titreImage);
+//console.log(slide);
+
+// for (let i = 0; i < medias.length; i++) {
+//   let photo = '<img scr="' + medias[i]["title"] + medias[i]["images"] + '" />';
+//   $(".containerCarrousel").append(photo);
+// }
+// function carrousel(medias) {
+//   p = 0;
+//   let container = document.querySelector(".containerCarrousel");
+//   g = document.querySelector(".fa-chevron-left");
+//   d = document.querySelector(".fa-chevron-right");
+//   let images = "";
+
+//   for (let i = 0; i < medias.length; i++) {
+//     images += '<img scr="' + medias[i]["title"] + medias[i]["images"] + '" />';
+//   }
+//   document.querySelector(".containerCarrousel").innerHTML = images;
+// }
+// console.log(carrousel);
+/**
+ * on ajoute toutes les images au carrousel et on les met sans la class='active'
+ */
+function initCarrousel(arrayImg) {
+  carrouselPhotos.innerHTML = "";
+
+  // parcours tous les médias, une boucle
+  arrayImg.forEach((media) => {
+    const carrouselPhoto = document.createElement("div");
+    carrouselPhoto.classList.add("carrouselPhoto");
+
+    carrouselPhoto.innerHTML = `
+      <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="" id="carrouselImg" class="carrouselImg">
+
+      <div class="infoPhoto">
+        <p id="carrouselTitre">${media.title}</p>
+      </div>`;
+    //console.log(carrouselPhoto);
+    carrouselPhotos.appendChild(carrouselPhoto);
+  });
+}
+
+/**
+ * affiche la bonne slide (retire la class='active' à tout le monde et l'ajoute à la bonne slide)
+ * va cherche les carrouselPhoto qu'il y a dans le DOM
+ */
+function displaySlide(indexSlide) {
+  const carrouselPhotos = document.querySelectorAll('.carrouselPhoto');
+  //console.log(carrouselPhotos);
+
+  // retire la class='active' de tous les éléments
+  for(let i = 0; i < carrouselPhotos.length; i++){
+		carrouselPhotos[i].classList.remove('active')
+	}
+
+  carrouselPhotos[indexSlide].classList.add("active");
+}
+
 async function init() {
   //const object = await getPhotographer();
   //displayPhotographer(object.photographer);
@@ -336,12 +483,41 @@ async function init() {
   //const medias = object.medias
   //displayPhotographer(photographer);
   //displayMedias(medias);
-
+  let slideIndex = 0;
   const { photographer, medias } = await getPhotographer();
   const newMedias = orderBy(medias); // va trier le tableau des médias
   displayPhotographer(photographer);
   displayMedias(newMedias);
   displayLikes(newMedias);
+  initCarrousel(newMedias);
+  displaySlide(slideIndex);
+  // displaySlide(2);
+  // displaySlide(4);
+
+
+  btnSliderPrevious.addEventListener('click', () => {
+    if(slideIndex > 0) {
+        slideIndex--
+    } else {
+        slideIndex = newMedias.length - 1
+    }
+
+    displaySlide(slideIndex);
+})
+
+
+btnSliderNext.addEventListener('click', () => {
+    if(slideIndex < newMedias.length - 1){
+        slideIndex++
+    } else {
+        slideIndex = 0;
+    }
+
+    displaySlide(slideIndex);
+})
+  //displayPhotosCarrousel(newMedias);
+  //displaySlide(newMedias);
+  //carrousel(newMedias);
 }
 
 init();

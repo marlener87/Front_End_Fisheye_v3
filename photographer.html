@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/960c3e545d.js" crossorigin="anonymous"></script>
-    <title>Fisheye - photographe </title>
-  </head>
 
-  <!--<body class="isModalOpen">-->
-  <body>
-    <header>
-     <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a> 
-    </header>
-    <main id="main">
-       <div class="photograph-header">
-        <!--<button class="contact_button" onclick="displayModal()">Contactez-moi</button>-->
-        <div class="descriptif">
-          <h1 class="name" id="userName"></h1>
-          <p class="city" id="userCity"></p>
-          <p class="userTagline" id="userTagline"></p>
-        </div>
-        <div class="coordonnees"></div>
-        <button class="contact_button open" onclick="displayModal()">Contactez-moi</button>
-        <div class="portraitPhotographe"></div>
-        <div class="photographerImage">
-          <img src="" alt="" id="userImage">
-        </div>
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/960c3e545d.js" crossorigin="anonymous"></script>
+  <title>Fisheye - photographe </title>
+</head>
+
+<!--<body class="isModalOpen">-->
+
+<body class="isModalOpen">
+  <header>
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+  </header>
+  <main id="main">
+    <div class="photograph-header">
+      <!--<button class="contact_button" onclick="displayModal()">Contactez-moi</button>-->
+      <div class="descriptif">
+        <h1 class="name" id="userName"></h1>
+        <p class="city" id="userCity"></p>
+        <p class="userTagline" id="userTagline"></p>
       </div>
-    </main>
+      <div class="coordonnees"></div>
+      <button class="contact_button open" onclick="displayModal()">Contactez-moi</button>
+      <div class="portraitPhotographe"></div>
+      <div class="photographerImage">
+        <img src="" alt="" id="userImage">
+      </div>
+    </div>
+  </main>
 
-    <!-- <div class="tri"> 
+  <!-- <div class="tri"> 
       <label for="orderBy" class="orderBy">Trier par</label>
       <select name="orderBy" id="orderBy" class="select">
         <option value="popularity" class="popularity">Popularité</option>
@@ -40,7 +42,7 @@
       </select>
     </div> -->
 
-    <!-- <div class="triMedias">
+  <!-- <div class="triMedias">
       <p class="orderBy">Trier par</p>
     
       <div class="tri">
@@ -55,84 +57,98 @@
       </div>
     </div>-->
 
-    <div class="triMedias">
-      <p class="orderBy">Trier par</p>
-    
-      <div class="tri">
-        <label for="orderBy">Popularité</label>
-        <input type="checkbox" name="orderBy" id="orderBy">
+  <div class="triMedias">
+    <p class="orderBy">Trier par</p>
 
-        <div class="dropdown-content" >
-          
-          <button data-value="popularity" class="btnSelect">Popularité</button>
-          
-          <button data-value="date" class="btnSelect">Date</button>
-          
-          <button data-value="title" class="btnSelect">Titre</button>
+    <div class="tri">
+      <label for="orderBy" class="btnOrderBy">Popularité
+        <i class="fa-solid fa-chevron-down"></i>
+        <!--<i class="fa-solid fa-chevron-up"></i>-->
+      </label>
+      <input type="checkbox" name="orderBy" id="orderBy">
 
+      <div class="dropdown-content">
+        <button data-value="popularity" class="btnSelect">Popularité</button>
+        <button data-value="date" class="btnSelect">Date</button>
+        <button data-value="title" class="btnSelect">Titre</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- GALERIE PHOTOS -->
+  <div class="mediaPhotos" id="mediaPhotos">
+
+  </div>
+
+
+  <!-- ENCART TJM ET TOTAL COEURS -->
+  <div class="encart">
+    <div class="totalLikes">
+      <p id="totalLikes" class="numberLike"></p>
+      <!-- COEUR NOIR REMPLI -->
+      <svg width="18" height="15" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M9.125 18.35L7.85625 17.03C3.35 12.36 0.375 9.28 0.375 5.5C0.375 2.42 2.4925 0 5.1875 0C6.71 0 8.17125 0.81 9.125 2.09C10.0787 0.81 11.54 0 13.0625 0C15.7575 0 17.875 2.42 17.875 5.5C17.875 9.28 14.9 12.36 10.3938 17.04L9.125 18.35Z"
+          fill="black" />
+      </svg>
+    </div>
+    <div id="price">
+      <p id="tjm"></p>
+    </div>
+  </div>
+
+
+  <!-- ENCART CARROUSEL -->
+  <div class="carrousel" id="carrousel" style="display: block;">
+    <div class="containerCarrousel">
+      <!--<img src="" alt="carrousel" class="carrouselImage">
+      <p class="titreImage"></p>-->
+    </div>
+    <!--<img src="assets/icons/close.svg" class="closeCarrousel"/>-->
+    <i class="fa-solid fa-xmark closeCarrousel"></i>
+    <i class="fa-solid fa-chevron-left chevronDG"></i>
+    <i class="fa-solid fa-chevron-right chevronDG"></i>
+  </div>
+
+  <!-- FENETRE MODALE -->
+  <div id="contact_modal">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi</h2>
+        <img src="assets/icons/close.svg" class="close" />
+      </header>
+      <form class="openForm" id="openForm">
+        <div>
+          <label for="firstName">Prénom</label>
+          <input type="text" id="firstName" name="firstName" />
+          <span class="error" id="firstNameError"></span>
         </div>
-      </div>
+        <div>
+          <label for="lastName">Nom</label>
+          <input type="text" id="lastName" name="lastName" />
+          <span class="error" id="lastNameError"></span>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" />
+          <span class="error" id="emailError"></span>
+        </div>
+        <div>
+          <label for="message">Votre message</label>
+          <textarea name="message" id="message" cols="100" rows="10"></textarea>
+          <span class="error" id="messageError"></span>
+        </div>
+        <!--<button class="contact_button btnClose" id="button">Envoyer</button>-->
+        <input class="contact_button" type="submit" id="button" value="Envoyer" formnovalidate="formnovalidate" />
+        <span class="error" id="btnError"></span>
+      </form>
     </div>
-    
+  </div>
 
-    <!-- GALERIE PHOTOS -->
-    <div class="mediaPhotos" id="mediaPhotos">
+  <script src="/scripts/pages/photographer.js"></script>
+  <script src="/scripts/utils/contactForm.js"></script>
+  <script src="/scripts/utils/carrousel.js"></script>
+</body>
 
-    </div>
-
-
-    <!-- ENCART TJM ET TOTAL COEURS -->
-    <div class="encart">
-      <div class="totalLikes">
-        <p id="totalLikes" class="numberLike"></p>
-        <!-- COEUR NOIR REMPLI -->
-        <svg width="18" height="15" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M9.125 18.35L7.85625 17.03C3.35 12.36 0.375 9.28 0.375 5.5C0.375 2.42 2.4925 0 5.1875 0C6.71 0 8.17125 0.81 9.125 2.09C10.0787 0.81 11.54 0 13.0625 0C15.7575 0 17.875 2.42 17.875 5.5C17.875 9.28 14.9 12.36 10.3938 17.04L9.125 18.35Z"
-            fill="black" />
-        </svg>
-      </div>
-      <div id="price">
-        <p id="tjm"></p>
-      </div>
-    </div>
-
-    <!-- FENETRE MODALE -->
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" class="close"/>
-        </header>
-				<form class="openForm" id="openForm">
-					<div>
-            <label for="firstName">Prénom</label>
-            <input type="text" id="firstName" name="firstName" />
-            <span class="error" id="firstNameError"></span>
-          </div>
-          <div>
-            <label for="lastName">Nom</label>
-            <input type="text" id="lastName" name="lastName" />
-            <span class="error" id="lastNameError"></span>
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" />
-            <span class="error" id="emailError"></span>
-          </div>
-          <div>
-            <label for="message">Votre message</label>
-            <textarea name="message" id="message" cols="100" rows="10"></textarea>
-            <span class="error" id="messageError"></span>
-          </div>
-          <!--<button class="contact_button btnClose" id="button">Envoyer</button>-->
-          <input class="contact_button" type="submit" id="button" value="Envoyer" formnovalidate="formnovalidate" />
-          <span class="error" id="btnError"></span>
-				</form>
-			</div>
-		</div>
-
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
 </html>

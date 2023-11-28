@@ -14,7 +14,7 @@ async function getPhotographers() {
   //.then((res2) => console.log(res2));
   //.then((data) => console.log(data));
 
-  //console.log(result);
+  console.log(result);
   return result;
 }
 

@@ -72,18 +72,18 @@ function init() {
 
 /*
 
-1) Faire le dropdown
+* 1) Faire le dropdown
 modifier le JS
 --- 
 
 1)
-- Au clic sur une image d'un média, ouvrir le carrousel 
+* - Au clic sur une image d'un média, ouvrir le carrousel 
 - Dans le carrousel avoir toutes les images + titres et pouvoir les faire défiler au clic sur la flèche gauche et droite
-- Bouton de fermeture du carrousel 
+* - Bouton de fermeture du carrousel 
 - carrousel avec une boucle infinie 
 
 2) 
-- Au clic, sur umage d'un média, ouvrir cette fois le carrousel positionné sur la bonne image
+- Au clic, sur image d'un média, ouvrir cette fois le carrousel positionné sur la bonne image
 - même comportement que le niveau 1
 
 3) 

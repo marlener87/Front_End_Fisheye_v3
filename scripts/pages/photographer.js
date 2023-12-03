@@ -36,21 +36,6 @@ async function getPhotographer() {
 // fonction get medias
 
 function displayPhotographer(insertPhotographer) {
-  // insertPhotographer.photographers.forEach((item) => {
-  //   const divInsert = document.createElement("div");
-  //   divInsert.classList.add("insert");
-
-  //   divInsert.innerHTML = `
-  //         <div class='coordonnees'>
-  //             <h2 class="name">${insertPhotographer.name}</h2>
-  //             <p class="localisation">${insertPhotographer.city}, ${insertPhotographer.country}</p>
-  //             <p class="tagline">${insertPhotographer.tagline}</p>
-  //         </div>
-  //         <div class='portraitPhotographe'>
-  //             <img src="../assets/photographersIDPhotos/${insertPhotographer.portrait}" alt="${insertPhotographer.name}"  class="imgPortrait">
-  //         </div>
-  //     `;
-
   userName.innerHTML = insertPhotographer.name;
   userCity.innerHTML = `${insertPhotographer.city}, ${insertPhotographer.country}`;
   userTagline.innerHTML = insertPhotographer.tagline;
@@ -59,9 +44,6 @@ function displayPhotographer(insertPhotographer) {
   userImage.alt = `Portrait du photographe ${insertPhotographer.name}`;
   // afficher le prix tjm
   tjm.innerHTML = `${insertPhotographer.price}€ / jour`;
-
-  //photographerHeader.appendChild(divInsert);
-  //});
 }
 
 // function displayMedias(photoMedia) {
@@ -76,18 +58,19 @@ function displayPhotographer(insertPhotographer) {
 //   //  photoMedia.
 // }
 
+// paramètre : permet de transmettre des infos de l'extérieur
 function displayMedias(medias) {
   // Réinitialise l'affichage
   mediaPhotos.innerHTML = "";
 
   // parcours tous les médias, une boucle
-  medias.forEach((media) => {
+  medias.forEach((media, index) => {
     const cardPhoto = document.createElement("div");
     cardPhoto.classList.add("cardPhoto");
 
     cardPhoto.innerHTML = `
-    <button class="imagePhotographe" id="imagePhotographe" onclick="displayCarrousel()">
-      <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="" id="photo" class="photo">
+    <button class="imagePhotographe" id="imagePhotographe">
+      <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="#" id="photo ${media.id}" class="photo">
     </button>
     <div class="infoPhoto">
       <p id="titre">${media.title}</p>
@@ -100,15 +83,25 @@ function displayMedias(medias) {
       </div>
     </div> 
     `;
-    //console.log(cardPhoto);
+    console.log(cardPhoto);
     mediaPhotos.appendChild(cardPhoto);
 
-    const btn = document.querySelector(`.btnLike[data-id="${media.id}"]`);
-    const cardLikes = document.querySelector(
-      `.card-likes[data-id="${media.id}"]`
-    );
 
-    btn.addEventListener("click", () => {
+    cardPhoto.addEventListener('click', () => {
+      displaySlide(index);
+      displayCarrousel();
+    })
+
+
+
+
+
+    const btn = document.querySelector(`.btnLike[data-id="${media.id}"]`);
+    const cardLikes = document.querySelector(`.card-likes[data-id="${media.id}"]`);
+
+    btn.addEventListener("click", (event) => {
+      event.stopPropagation();
+
       /* faire la trace
       media.isLiked = false;
       media.likes = 88;
@@ -233,6 +226,9 @@ btnList.forEach((btn) => {
 
     // Affichage des médias triés
     displayMedias(newMedias);
+
+    // Réinitialise l'affichage des médias dans le carrousel
+    initCarrousel(newMedias);
 
     // document.querySelector(".fa-chevron-up").style.visibility = "visible";
     // document.querySelector(".fa-chevron-down").style.visibility = "hidden";
@@ -439,6 +435,8 @@ const btnSliderPrevious = document.querySelector(".fa-chevron-left");
  * on ajoute toutes les images au carrousel et on les met sans la class='active'
  */
 function initCarrousel(arrayImg) {
+
+  // Vide l'affichage
   carrouselPhotos.innerHTML = "";
 
   // parcours tous les médias, une boucle
@@ -447,10 +445,10 @@ function initCarrousel(arrayImg) {
     carrouselPhoto.classList.add("carrouselPhoto");
 
     carrouselPhoto.innerHTML = `
-      <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="" id="carrouselImg" class="carrouselImg">
+      <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="" id="carrouselImg ${media.id}" class="carrouselImg">
 
       <div class="infoPhoto">
-        <p id="carrouselTitre">${media.title}</p>
+        <p id="carrouselTitre" class="carrouselTitre">${media.title}</p>
       </div>`;
     //console.log(carrouselPhoto);
     carrouselPhotos.appendChild(carrouselPhoto);
@@ -462,17 +460,23 @@ function initCarrousel(arrayImg) {
  * va cherche les carrouselPhoto qu'il y a dans le DOM
  */
 function displaySlide(indexSlide) {
-  const carrouselPhotos = document.querySelectorAll('.carrouselPhoto');
-  //console.log(carrouselPhotos);
+  const photos = document.querySelectorAll('.carrouselPhoto');
 
   // retire la class='active' de tous les éléments
-  for(let i = 0; i < carrouselPhotos.length; i++){
-		carrouselPhotos[i].classList.remove('active')
+  for(let i = 0; i < photos.length; i++){
+		photos[i].classList.remove('active')
 	}
+  photos[indexSlide].classList.add("active");
 
-  carrouselPhotos[indexSlide].classList.add("active");
+
+  // Sauvegarder la position du carrousel 
+  carrouselPhotos.setAttribute('data-position', indexSlide)
+  
 }
 
+/**
+ * 
+ */
 async function init() {
   //const object = await getPhotographer();
   //displayPhotographer(object.photographer);
@@ -483,19 +487,23 @@ async function init() {
   //const medias = object.medias
   //displayPhotographer(photographer);
   //displayMedias(medias);
-  let slideIndex = 0;
+
+
   const { photographer, medias } = await getPhotographer();
   const newMedias = orderBy(medias); // va trier le tableau des médias
   displayPhotographer(photographer);
   displayMedias(newMedias);
-  displayLikes(newMedias);
   initCarrousel(newMedias);
-  displaySlide(slideIndex);
+  displayLikes(newMedias);
+
   // displaySlide(2);
   // displaySlide(4);
 
 
   btnSliderPrevious.addEventListener('click', () => {
+    const position = carrouselPhotos.getAttribute('data-position')
+    let slideIndex = parseInt(position)
+    
     if(slideIndex > 0) {
         slideIndex--
     } else {
@@ -507,7 +515,10 @@ async function init() {
 
 
 btnSliderNext.addEventListener('click', () => {
-    if(slideIndex < newMedias.length - 1){
+  const position = carrouselPhotos.getAttribute('data-position')
+  let slideIndex = parseInt(position)
+
+    if(slideIndex < newMedias.length - 1) {
         slideIndex++
     } else {
         slideIndex = 0;
@@ -515,9 +526,6 @@ btnSliderNext.addEventListener('click', () => {
 
     displaySlide(slideIndex);
 })
-  //displayPhotosCarrousel(newMedias);
-  //displaySlide(newMedias);
-  //carrousel(newMedias);
 }
 
 init();

@@ -3,15 +3,12 @@
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
-    /* position: relative;
-    box-sizing: border-box; */
 }
 
 body.isModalOpen {
     overflow: hidden;
     height: 100vh;
 }
-
 
 header {
     display: flex;
@@ -138,10 +135,6 @@ p {
     color: grey;
 }
 
-/* .tri {
-    margin: 20px 100px;
-} */
-
 .select {
     background-color: #901C1C;
     border-color: #901C1C;
@@ -152,9 +145,6 @@ p {
     padding: 10px;
 }
 
-/* .select:focus-visible {
-    border-color: #901C1C;
-} */
 #titre {
     font-size: 18px;
 }
@@ -273,6 +263,16 @@ option {
     /* position: relative; */
 }
 
+.tri input[type="checkbox"]:checked~.btnOrderBy::after {
+    content: "";
+    width: calc(100% - 20px);
+    height: 1px;
+    background: white;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+}
+
 .tri {
     position: relative;
 }
@@ -298,13 +298,7 @@ option {
     cursor: pointer;
 }
 
-/* .tri label::after {
-    content: "▾";
-    padding-left: 30px;
-} */
-
 .fa-chevron-up {
-    /*display: none;*/
     visibility: hidden;
 }
 
@@ -325,7 +319,7 @@ option {
     /* flex-direction: column; */
     border-radius: 5px;
     position: absolute;
-    overflow: hidden;
+    /* overflow: hidden; */
     top: calc(100% - 10px);
     /*left: 0; */
     z-index: 100;
@@ -342,7 +336,7 @@ option {
     display: flex;
     padding: 5px 20px;
     cursor: pointer;
-    /* padding: 0;*/
+    font-family: "DM Sans", sans-serif;
 }
 
 .dropdown-content button:not(:last-child)::after {
@@ -355,24 +349,8 @@ option {
     left: 10px;
 }
 
-/* .dropdown-content button {
-    content: "";
-    width: calc(50% - 20px);
-    height: 10px;
-    background: black;
-    position: absolute;
-    bottom: 0;
-    left: 10px;
-} */
-
 /* CARROUSEL */
 .carrousel {
-    /*width: 1000px;
-    height: 600px;
-    border: solid 4px #fff;
-    box-shadow: 0 0 14px rgba(0,0,0,0.3);
-    margin: 30px auto;*/
-
     display: none;
     position: fixed;
     /* position: relative; */
@@ -382,32 +360,47 @@ option {
     overflow: hidden;
     height: 100%;
     width: 100%;
-    background-color: rgba(26, 39, 156, 0.4);
+    /* background-color: rgba(26, 39, 156, 0.4); */
+    background-color: aliceblue;
 }
 
 .containerCarrousel {
     border-radius: 5px;
-    background-color: #DB8876;
+    /* background-color: #DB8876; */
     width: 50%;
     height: 70%;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     padding: 35px;
     margin: 5% auto;
 }
 
 .carrouselPhoto {
-    /* width: 100%;
-    height: 100%; */
+    width: 100%;
+    height: 100%;
     display: none;
     /* flex-direction: column; */
 }
 
 .carrouselPhoto.active {
-    display: block;
+    /* display: block; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
+}
+
+.carrouselImg {
+    width: auto;
+    height: 100%;
+    margin-bottom: 10px;
+}
+
+.carrouselTitre {
+    font-size: 20px;
 }
 
 .chevronDG {
@@ -440,8 +433,6 @@ option {
     position: absolute;
     color: #901C1C;
     font-size: 70px;
-    /* top: 50px;
-    right: 50px; */
     top: 5%;
     right: 10%;
     cursor: pointer;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -14,11 +14,10 @@
 
 <body>
   <header>
-    <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="logo FishEye" /></a>
   </header>
   <main id="main">
     <div class="photograph-header">
-      <!--<button class="contact_button" onclick="displayModal()">Contactez-moi</button>-->
       <div class="descriptif">
         <h1 class="name" id="userName"></h1>
         <p class="city" id="userCity"></p>
@@ -32,30 +31,6 @@
       </div>
     </div>
   </main>
-
-  <!-- <div class="tri"> 
-      <label for="orderBy" class="orderBy">Trier par</label>
-      <select name="orderBy" id="orderBy" class="select">
-        <option value="popularity" class="popularity">Popularité</option>
-        <option value="date" class="date">Date</option>
-        <option value="title" class="title">Titre</option>
-      </select>
-    </div> -->
-
-  <!-- <div class="triMedias">
-      <p class="orderBy">Trier par</p>
-    
-      <div class="tri">
-        <label for="sortMedias">Popularité</label>
-        <input type="checkbox" name="sortMedias" id="sortMedias">
-
-        <div class="dropdown-content">
-          <button>Popularité</button>
-          <button>Date</button>
-          <button>Titre</button>
-        </div>
-      </div>
-    </div>-->
 
   <div class="triMedias">
     <p class="orderBy">Trier par</p>
@@ -77,9 +52,7 @@
 
 
   <!-- GALERIE PHOTOS -->
-  <div class="mediaPhotos" id="mediaPhotos">
-
-  </div>
+  <div class="mediaPhotos" id="mediaPhotos"></div>
 
 
   <!-- ENCART TJM ET TOTAL COEURS -->
@@ -101,11 +74,7 @@
 
   <!-- ENCART CARROUSEL  style="display: block;"-->
   <div class="carrousel" id="carrousel">
-    <div class="containerCarrousel">
-      <!--<img src="" alt="carrousel" class="carrouselImage">
-      <p class="titreImage"></p>-->
-    </div>
-    <!--<img src="assets/icons/close.svg" class="closeCarrousel"/>-->
+    <div class="containerCarrousel"></div>
     <i class="fa-solid fa-xmark closeCarrousel"></i>
     <i class="fa-solid fa-chevron-left chevronDG"></i>
     <i class="fa-solid fa-chevron-right chevronDG"></i>
@@ -116,7 +85,7 @@
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" class="close" />
+        <img src="assets/icons/close.svg" class="close" alt="fermer formulaire" />
       </header>
       <form class="openForm" id="openForm">
         <div>
@@ -139,7 +108,6 @@
           <textarea name="message" id="message" cols="100" rows="10"></textarea>
           <span class="error" id="messageError"></span>
         </div>
-        <!--<button class="contact_button btnClose" id="button">Envoyer</button>-->
         <input class="contact_button" type="submit" id="button" value="Envoyer" formnovalidate="formnovalidate" />
         <span class="error" id="btnError"></span>
       </form>

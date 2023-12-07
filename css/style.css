@@ -110,7 +110,6 @@ p {
 
 /* PAGE PHOTOGRAPHE.HTML */
 .photograph-header {
-    /*width: 100%;*/
     width: auto;
     display: flex;
     justify-content: space-around;
@@ -121,7 +120,6 @@ p {
     height: 170px;
     width: 170px;
     border-radius: 100%;
-    /* transform: scale(1.6); */
     object-fit: cover;
     box-shadow: -1px 2px 4px black;
 }
@@ -260,7 +258,6 @@ option {
     justify-content: left;
     align-items: center;
     margin: 20px 100px;
-    /* position: relative; */
 }
 
 .tri input[type="checkbox"]:checked~.btnOrderBy::after {
@@ -316,12 +313,9 @@ option {
     display: none;
     align-items: center;
     justify-content: left;
-    /* flex-direction: column; */
     border-radius: 5px;
     position: absolute;
-    /* overflow: hidden; */
     top: calc(100% - 10px);
-    /*left: 0; */
     z-index: 100;
 }
 
@@ -353,25 +347,19 @@ option {
 .carrousel {
     display: none;
     position: fixed;
-    /* position: relative; */
     z-index: 1;
     left: 0;
     top: 0;
     overflow: hidden;
     height: 100%;
     width: 100%;
-    /* background-color: rgba(26, 39, 156, 0.4); */
     background-color: aliceblue;
 }
 
 .containerCarrousel {
     border-radius: 5px;
-    /* background-color: #DB8876; */
     width: 50%;
     height: 70%;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
     padding: 35px;
     margin: 5% auto;
 }
@@ -380,11 +368,9 @@ option {
     width: 100%;
     height: 100%;
     display: none;
-    /* flex-direction: column; */
 }
 
 .carrouselPhoto.active {
-    /* display: block; */
     display: flex;
     flex-direction: column;
     align-items: center;

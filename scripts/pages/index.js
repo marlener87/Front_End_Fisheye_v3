@@ -1,28 +1,24 @@
 const photographersSection = document.querySelector(".photographer_section");
 
+/**
+ * function qui va chercher les données dans le fichier .json
+ * @returns
+ */
 async function getPhotographers() {
-  const result = await fetch("/data/photographers.json") // pour aller chercher un fichier .json
+  // pour aller chercher un fichier .json
+  const result = await fetch("/data/photographers.json").then((res) => {
     //.then((res) => console.log(res));
     //.then((res) => res.json())
-    .then((res) => {
-      //const test = 3;
-      //const toto = { cle: "valeur" };
-      //return toto;
-
-      return res.json();
-    });
-  //.then((res2) => console.log(res2));
-  //.then((data) => console.log(data));
-
-  console.log(result);
+    return res.json();
+  });
+  //console.log(result);
   return result;
 }
 
-async function init() {
-  const listPhotographers = await getPhotographers(); // récupère les données des photographes
-  displayPhotographers(listPhotographers);
-}
-
+/**
+ * function qui va créer la carte du photographe, avec son nom, prénom, photo, ville, tagline et TJM
+ * @param {*} objectPhotographers 
+ */
 function displayPhotographers(objectPhotographers) {
   objectPhotographers.photographers.forEach((item) => {
     const divCard = document.createElement("div");
@@ -39,6 +35,11 @@ function displayPhotographers(objectPhotographers) {
     `;
     photographersSection.appendChild(divCard);
   });
+}
+
+async function init() {
+  const listPhotographers = await getPhotographers(); // récupère les données des photographes
+  displayPhotographers(listPhotographers);
 }
 
 init();

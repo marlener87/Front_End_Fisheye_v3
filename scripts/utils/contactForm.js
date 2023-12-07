@@ -62,9 +62,6 @@ function checkInputsValidationName(inputName, inputId) {
     isInputValid = true;
   }
 
-  //console.log('le champ est : ' + isInputValid)
-  //return isInputValid;
-  //console.log(inputName.value);
   return {
     isInputValid: isInputValid,
     inputLast: inputLast,
@@ -79,9 +76,6 @@ function checkInputsValidationName(inputName, inputId) {
 function checkInputValidationEmail() {
   const error = document.querySelector("#emailError");
 
-  //console.log('on insert');
-  //console.log(event.target);
-  //console.log(event.target.value);
   let regex = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i;
   let inputEmail = email.value;
   let isInputValid = false;
@@ -93,8 +87,7 @@ function checkInputValidationEmail() {
     error.innerHTML = "Merci de remplir correctement ce champ.";
     isInputValid = false;
   }
-  //console.log(email.value);
-  //return isInputValid;
+
   return {
     isInputValid: isInputValid,
     inputEmail: inputEmail,
@@ -108,9 +101,6 @@ function checkInputValidationEmail() {
 function checkInputValidationMessage() {
   const error = document.querySelector("#messageError");
 
-  //console.log('on insert');
-  //console.log(event.target);
-  //console.log(event.target.value);
   let inputMessage = message.value;
   let isInputValid = false;
 
@@ -121,8 +111,7 @@ function checkInputValidationMessage() {
     error.innerHTML = "";
     isInputValid = true;
   }
-  //console.log(email.value);
-  //return isInputValid;
+
   return {
     isInputValid: isInputValid,
     inputMessage: inputMessage,

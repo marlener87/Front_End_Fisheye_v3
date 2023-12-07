@@ -94,3 +94,19 @@ modifier le JS
 - remplacer aussi dans le carrousel la vidéo (pouvoir avoir les controls avec play, restart, ...)
 
 */
+/* faire la trace
+      media.isLiked = false;
+      media.likes = 88;
+      button = ".btnLike";
+      cardLikes.innerHTML = media.likes  = 88
+
+      media.isLiked = true;
+      media.likes = 88;
+      button = ".btnLike .isLiked";
+      cardLikes.innerHTML = media.likes + 1 = 89
+
+      media.isLiked = false;
+      media.likes = 88;
+      button = ".btnLike";
+      cardLikes.innerHTML = media.likes  = 88
+      */

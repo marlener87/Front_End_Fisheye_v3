@@ -5,12 +5,6 @@ const carrousel = document.querySelector("#carrousel");
 function closeModalCarrousel() {
   carrousel.style.display = "none";
 
-  //   const openForm = document.querySelector(".containerCarrousel");
-  //   openForm.classList.remove("hidden");
-
-  //   const closeForm = document.querySelector(".closeCarrousel");
-  //   closeForm.classList.remove("active");
-
   document.body.classList.remove("isModalOpen");
 }
 

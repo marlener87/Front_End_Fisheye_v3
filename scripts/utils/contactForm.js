@@ -1,7 +1,8 @@
 // VARIABLES
 const modalBtn = document.querySelectorAll(".open");
 const modalBtnClose = document.querySelectorAll(".close"); // bouton croix
-const btnCloseEnd = document.querySelectorAll(".btnClose"); // bouton 'envoyer'
+//const btnCloseEnd = document.querySelectorAll(".btnClose"); // bouton 'envoyer'
+//const btnCloseEnd = document.querySelectorAll(".contact_button"); // bouton 'envoyer'
 
 const modal = document.querySelector("#contact_modal");
 
@@ -141,16 +142,22 @@ openForm.addEventListener("submit", (event) => {
     firstName,
     "firstNameError"
   );
-  console.log(isFirstNameIsValid);
   const isLastNameIsValid = checkInputsValidationName(
     lastName,
     "lastNameError"
   );
-  console.log(isLastNameIsValid);
   const isEmailIsValid = checkInputValidationEmail();
-  console.log(isEmailIsValid);
   const isMessageIsValid = checkInputValidationMessage();
-  console.log(isMessageIsValid);
+
+
+  const values = {
+    firstname: firstName.value, 
+    lastname: lastName.value, 
+    email: email.value,
+    message : message.value,
+  }
+
+  console.log(values)
 
   if (
     isFirstNameIsValid.isInputValid &&
@@ -158,13 +165,15 @@ openForm.addEventListener("submit", (event) => {
     isEmailIsValid.isInputValid &&
     isMessageIsValid.isInputValid
   ) {
-    const openForm = document.querySelector("#openForm");
-    openForm.classList.add("hidden");
+    //const openForm = document.querySelector("#openForm");
+    //openForm.classList.add("hidden");
 
-    const closeForm = document.querySelector(".close");
-    closeForm.classList.add("active");
+    //const closeForm = document.querySelector(".close");
+    //closeForm.classList.add("active");
 
-    resetMyForm();
+    //resetMyForm();
+
+    closeModal()
 
     console.log("Le formulaire est bon");
     error.innerHTML = "";
@@ -209,4 +218,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", displayModal));
 
 // close modal event
 modalBtnClose.forEach((btn) => btn.addEventListener("click", closeModal));
-btnCloseEnd.forEach((btn) => btn.addEventListener("click", closeModal));
+//btnCloseEnd.forEach((btn) => btn.addEventListener("click", closeModal));
+
+
+
+

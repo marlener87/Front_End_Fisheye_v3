@@ -27,13 +27,20 @@ async function getPhotographer() {
 
   let photographer = null; // c'est un objet
   results.photographers.forEach((item) => {
-    if (item.id === photographerID) {
-      photographer = item;
+
+    // FactoryPhotographer
+    const newItem = PhotographerFactory(item, 'V1')
+
+    if (newItem.id === photographerID) {
+      photographer = newItem;
     }
   });
 
   let medias = []; // c'est un tableau
   results.media.forEach((itemMedia) => {
+
+    // FactoryMedia
+
     if (itemMedia.photographerId === photographerID) {
       medias.push({ ...itemMedia, isLiked: false });
     }
@@ -256,7 +263,7 @@ function displaySlide(indexSlide) {
 /**
  * function qui initialise toutes les functions
  * gère les boutons 'avant'/'après' du carrousel
- */
+ * */
 async function init() {
   const { photographer, medias } = await getPhotographer();
   const newMedias = orderBy(medias); // va trier le tableau des médias

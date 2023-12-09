@@ -23,8 +23,8 @@ function displayPhotographers(objectPhotographers) {
     const photographer = PhotographerFactory(item, 'V1')
 
     // Création d'une nouvelle div
-    const divCard = document.createElement("div");  // <div></div>
-    divCard.classList.add("card"); // <div class="card"></div>
+    const divCard = document.createElement("div"); 
+    divCard.classList.add("card");
 
     // Modification du contenu de la nouvelle div
     divCard.innerHTML = `
@@ -36,18 +36,6 @@ function displayPhotographers(objectPhotographers) {
         <p class="tagline">${photographer.tagline}</p>
         <p class="price">${photographer.price}€/jour</p>
     `;
-
-    /*
-        <div class="card">
-          <a href="photographer.html?id=243" class="lienPhotographe">
-            <img src="../assets/photographersIDPhotos/MimiKeel.jpg " alt="Mimi Keel" class="portrait">
-            <h2 class="name">Mimi Keel</h2>
-          </a>
-          <p class="localisation">London, UK</p>
-          <p class="tagline">Voir le beau dans le quotidien</p>
-          <p class="price">400€/jour</p>
-        </div>
-     */
 
     // Ajout de la div dans le DOM
     photographersSection.appendChild(divCard);

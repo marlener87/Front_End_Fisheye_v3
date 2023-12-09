@@ -1,4 +1,3 @@
-
 /*
 class PhotographerV2  {
 
@@ -26,5 +25,3 @@ function PhotographerV2(data){
 
     return newObject
 }
-
-

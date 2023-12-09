@@ -40,10 +40,15 @@ async function getPhotographer() {
   results.media.forEach((itemMedia) => {
 
     // FactoryMedia
+    const newMedia = mediaFactory(itemMedia, 'V1')
 
-    if (itemMedia.photographerId === photographerID) {
-      medias.push({ ...itemMedia, isLiked: false });
+    if (newMedia.photographerId === photographerID) {
+      medias.push({ ...newMedia, isLiked: false });
     }
+
+    // if (itemMedia.photographerId === photographerID) {
+    //   medias.push({ ...itemMedia, isLiked: false });
+    // }
   });
 
   return { photographer, medias };
@@ -55,6 +60,18 @@ async function getPhotographer() {
  * @param {*} insertPhotographer 
  */
 function displayPhotographer(insertPhotographer) {
+  
+  // const photographer = mediaFactory(insertPhotographer, 'V1');
+
+  // userName.innerHTML = photographer.name;
+  // userCity.innerHTML = `${photographer.city}, ${photographer.country}`;
+  // userTagline.innerHTML = photographer.tagline;
+
+  // userImage.src = `./assets/PhotographersIDPhotos/${photographer.portrait}`;
+  // userImage.alt = `Portrait du photographe ${photographer.name}`;
+  // // afficher le prix tjm
+  // tjm.innerHTML = `${photographer.price}€ / jour`;
+  
   userName.innerHTML = insertPhotographer.name;
   userCity.innerHTML = `${insertPhotographer.city}, ${insertPhotographer.country}`;
   userTagline.innerHTML = insertPhotographer.tagline;

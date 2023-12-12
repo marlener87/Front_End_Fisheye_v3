@@ -10,6 +10,10 @@ body.isModalOpen {
     height: 100vh;
 }
 
+main {
+    padding-bottom: 30px;
+}
+
 header {
     display: flex;
     flex-direction: row;
@@ -133,16 +137,6 @@ p {
     color: grey;
 }
 
-.select {
-    background-color: #901C1C;
-    border-color: #901C1C;
-    color: white;
-    border-radius: 5px;
-    height: 40px;
-    width: 110px;
-    padding: 10px;
-}
-
 #titre {
     font-size: 18px;
 }
@@ -245,22 +239,11 @@ option {
     justify-content: space-between;
     color: #901C1C;
     font-weight: 700;
+    padding: 0 6px;
 }
 
 /* dropdown content*/
-.orderBy {
-    font-weight: bold;
-    margin-right: 30px;
-}
-
-.triMedias {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    margin: 20px 100px;
-}
-
-.tri input[type="checkbox"]:checked~.btnOrderBy::after {
+/* .tri input[type="checkbox"]:checked~.btnOrderBy::after {
     content: "";
     width: calc(100% - 20px);
     height: 1px;
@@ -308,9 +291,9 @@ option {
 
 .fa-chevron-down {
     padding-left: 20px;
-}
+} */
 
-.dropdown-content {
+/* .dropdown-content {
     width: 100%;
     display: none;
     align-items: center;
@@ -343,7 +326,7 @@ option {
     position: absolute;
     bottom: 0;
     left: 10px;
-}
+} */
 
 /* CARROUSEL */
 .carrousel {

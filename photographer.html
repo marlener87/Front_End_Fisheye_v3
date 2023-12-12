@@ -32,13 +32,11 @@
     </div>
   </main>
 
-  <div class="triMedias">
+  <!--<div class="triMedias">
     <p class="orderBy">Trier par</p>
 
     <div class="tri">
       <label for="orderBy" class="btnOrderBy">Popularité
-        <!--<i class="fa-solid fa-chevron-down"></i>-->
-        <!--<i class="fa-solid fa-chevron-up"></i>-->
         <div class="caret"></div>
       </label>
       <input type="checkbox" name="orderBy" id="orderBy">
@@ -48,6 +46,22 @@
         <button data-value="date" class="btnSelect">Date</button>
         <button data-value="title" class="btnSelect">Titre</button>
       </div>
+    </div>
+  </div> -->
+
+  <div class="triMedias">
+    <p class="orderBy">Trier par</p>
+
+    <div class="dropdown btnOrderBy">
+      <div class="select">
+        <span class="selected">Popularité</span>
+        <div class="caret"></div>
+      </div>
+      <ul class="menu">
+        <li data-value="date" class="btnSelect">Date</li>
+        <li data-value="popularity" class="btnSelect">Popularité</li>
+        <li data-value="title" class="btnSelect">Titre</li>
+      </ul>
     </div>
   </div>
 
@@ -125,6 +139,7 @@
   <script src="/scripts/pages/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
   <script src="/scripts/utils/carrousel.js"></script>
+  <script src="/scripts/utils/caret.js"></script>
 </body>
 
 </html>

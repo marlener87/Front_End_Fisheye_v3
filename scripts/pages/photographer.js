@@ -96,10 +96,15 @@ function displayMedias(medias) {
     const cardPhoto = document.createElement("div");
     cardPhoto.classList.add("cardPhoto");
 
+    const mediaContent = media.image
+    ? `<img src="./FishEye_Photos/${photographerID}/${media.image}" alt="${media.title}" id="photo ${media.id}" class="photo">` 
+    : `<video controls class="photo">
+      <source src="./FishEye_Photos/${photographerID}/${media.video}" type="video/mp4" alt="${media.title}">
+      Votre navigateur ne prend pas en charge ce type de vidéo.
+    </video>`;
+
     cardPhoto.innerHTML = `
-    <button class="imagePhotographe" id="imagePhotographe">
-      <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="#" id="photo ${media.id}" class="photo">
-    </button>
+    <button class="imagePhotographe" id="imagePhotographe">${mediaContent}</button>
     <div class="infoPhoto">
       <p id="titre">${media.title}</p>
       <div class="likes">
@@ -249,11 +254,12 @@ function initCarrousel(arrayImg) {
     carrouselPhoto.classList.add("carrouselPhoto");
 
     carrouselPhoto.innerHTML = `
-      <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="" id="carrouselImg ${media.id}" class="carrouselImg">
+      <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="${media.title}" id="carrouselImg ${media.id}" class="carrouselImg">
 
       <div class="infoPhoto">
         <p id="carrouselTitre" class="carrouselTitre">${media.title}</p>
       </div>`;
+      //
     //console.log(carrouselPhoto);
     carrouselPhotos.appendChild(carrouselPhoto);
   });

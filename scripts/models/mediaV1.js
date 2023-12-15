@@ -4,6 +4,7 @@ function mediaV1(data){
         photographerId: data.photographerId,
         title: data.title,
         image: data.image,
+        video: data.video,
         likes: data.likes,
         date: data.date,
         price: data.price

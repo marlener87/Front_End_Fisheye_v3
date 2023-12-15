@@ -26,6 +26,11 @@ function displayModal() {
 
   const myBody = document.querySelector("body");
   myBody.classList.add("isModalOpen");
+  myBody.setAttribute('aria-hidden', 'true');
+  modal.setAttribute('aria-hidden', 'false');
+  
+  
+  document.getElementById('btnModalContactClose').focus()
 }
 
 function closeModal() {
@@ -39,6 +44,9 @@ function closeModal() {
 
   const myBody = document.querySelector("body");
   myBody.classList.remove("isModalOpen");
+  myBody.setAttribute('aria-hidden', 'false');
+  modal.setAttribute('aria-hidden', 'true');
+  modalBtn.focus();
 
   resetMyForm();
 }
@@ -221,5 +229,12 @@ modalBtnClose.forEach((btn) => btn.addEventListener("click", closeModal));
 //btnCloseEnd.forEach((btn) => btn.addEventListener("click", closeModal));
 
 
+// ACCESSIBILITE
+// document.on('keydown', e => {
+//   const keyCode = e.keyCode ? e.keyCode : e.which
 
+//   if(modal.setAttribute('aria-hidden') == 'false' && keyCode === 27) {
+//     closeModal
+//   }
+// })
 

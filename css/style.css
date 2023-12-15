@@ -5,6 +5,13 @@ body {
     margin: 0;
 }
 
+body[aria-hidden="true"] main,
+body[aria-hidden="true"]>header {
+    display: none;
+}
+
+
+
 body.isModalOpen {
     overflow: hidden;
     height: 100vh;
@@ -156,7 +163,7 @@ p {
     display: block;
 }
 
-.btnLike .fa-solid {
+.btnLike .fa-coeur {
     display: none;
 }
 
@@ -164,7 +171,7 @@ p {
     display: none;
 }
 
-.btnLike.isLiked .fa-solid {
+.btnLike.isLiked .fa-coeur {
     display: block;
 }
 
@@ -205,7 +212,7 @@ option {
     font-size: 16px;
 }
 
-.fa-solid {
+.fa-coeur {
     color: #901C1C;
     font-size: 16px;
 }
@@ -287,12 +294,15 @@ option {
 .fa-chevron-down,
 .fa-chevron-up {
     color: white;
-}
+} 
 
 .fa-chevron-down {
+    color: white;
+    display: block;
+    visibility: visible;
     padding-left: 20px;
-} */
-
+}
+*/
 /* .dropdown-content {
     width: 100%;
     display: none;
@@ -364,7 +374,8 @@ option {
     height: 100%;
 }
 
-.carrouselImg {
+.carrouselImg,
+.carrouselVideo {
     width: auto;
     height: 100%;
     margin-bottom: 10px;

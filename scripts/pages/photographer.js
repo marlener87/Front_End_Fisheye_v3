@@ -42,6 +42,8 @@ async function getPhotographer() {
     // FactoryMedia
     const newMedia = mediaFactory(itemMedia, 'V1')
 
+    console.log(newMedia)
+
     if (newMedia.photographerId === photographerID) {
       medias.push({ ...newMedia, isLiked: false });
     }
@@ -98,7 +100,7 @@ function displayMedias(medias) {
 
     const mediaContent = media.image
     ? `<img src="./FishEye_Photos/${photographerID}/${media.image}" alt="${media.title}" id="photo ${media.id}" class="photo">` 
-    : `<video controls class="photo">
+    : `<video class="photo">
       <source src="./FishEye_Photos/${photographerID}/${media.video}" type="video/mp4" alt="${media.title}">
       Votre navigateur ne prend pas en charge ce type de vidéo.
     </video>`;
@@ -106,12 +108,12 @@ function displayMedias(medias) {
     cardPhoto.innerHTML = `
     <button class="imagePhotographe" id="imagePhotographe">${mediaContent}</button>
     <div class="infoPhoto">
-      <p id="titre">${media.title}</p>
+      <p id="titre"  >${media.title}</p>
       <div class="likes">
         <span class="card-likes" data-id="${media.id}">${media.likes}</span>
-        <button class="btnLike ${media.isLiked ? "isLiked" : ""}" data-id="${media.id}">
+        <button   class="btnLike ${media.isLiked ? "isLiked" : ""}" data-id="${media.id}">
           <i class="fa-regular fa-heart"></i>
-          <i class="fa-solid fa-heart"></i>
+          <i class="fa-solid fa-heart fa-coeur"></i>
         </button>
       </div>
     </div> 
@@ -253,8 +255,15 @@ function initCarrousel(arrayImg) {
     const carrouselPhoto = document.createElement("div");
     carrouselPhoto.classList.add("carrouselPhoto");
 
+    const mediaContent = media.image
+    ? `<img src="./FishEye_Photos/${photographerID}/${media.image}" alt="${media.title}" id="carrouselImg ${media.id}" class="carrouselImg">` 
+    : `<video controls class="carrouselVideo">
+      <source src="./FishEye_Photos/${photographerID}/${media.video}" type="video/mp4" alt="${media.title}">
+      Votre navigateur ne prend pas en charge ce type de vidéo.
+    </video>`;
+
     carrouselPhoto.innerHTML = `
-      <img src="./FishEye_Photos/${photographerID}/${media.image}" alt="${media.title}" id="carrouselImg ${media.id}" class="carrouselImg">
+      ${mediaContent}
 
       <div class="infoPhoto">
         <p id="carrouselTitre" class="carrouselTitre">${media.title}</p>
@@ -282,6 +291,8 @@ function displaySlide(indexSlide) {
   // Sauvegarder la position du carrousel 
   carrouselPhotos.setAttribute('data-position', indexSlide)
 }
+
+
 
 /**
  * function qui initialise toutes les functions
@@ -318,6 +329,27 @@ async function init() {
       }
     displaySlide(slideIndex);
   })
+
+  
+  document.keydown('click', (e) => {
+    const keyCode = e.key ? e.key : e.which
+
+    if(keyCode === 39) {
+      btnSliderNext();
+    } else if(keyCode === 37) {
+      btnSliderPrevious();
+    }
+  })
 }
 
 init();
+
+
+
+
+/**
+ * Dropdown : 
+ * - le content n'a pas la même taille que le boutton en lui même
+ * - Flèche qu'est pas la bonne
+ * - On retire l'element selectionner 
+ */

@@ -1,4 +1,5 @@
 const dropdowns = document.querySelectorAll('.dropdown');
+
 dropdowns.forEach(dropdown => {
     const select = dropdown.querySelector('.select');
     const caret = dropdown.querySelector('.caret');
@@ -15,6 +16,7 @@ dropdowns.forEach(dropdown => {
     options.forEach(option => {
         option.addEventListener('click', () => {
             selected.innerText = option.innerText;
+
             select.classList.remove('select-clicked');
             caret.classList.remove('caret-rotate');
             menu.classList.remove('menu-open');
@@ -22,6 +24,7 @@ dropdowns.forEach(dropdown => {
             options.forEach(option => {
                 option.classList.remove('active');
             });
+            
             option.classList.add('active');
         });
     });

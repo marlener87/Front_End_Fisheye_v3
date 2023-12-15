@@ -165,6 +165,10 @@ form textarea {
     transition: background 0.3s;
 }
 
+.selected {
+    font-size: 16px;
+}
+
 .menu {
     list-style: none;
     padding: 0.2em 0.5em;
@@ -175,7 +179,7 @@ form textarea {
     position: absolute;
     top: 38px;
     left: 75px;
-    width: 149px;
+    width: 150px;
     transform: translateX(-50%);
     opacity: 0;
     display: none;
@@ -189,7 +193,11 @@ form textarea {
     position: relative;
 }
 
-.menu li:not(:last-child)::after {
+.menu li.active {
+    display: none;
+}
+
+.menu li:not(.active)::after {
     content: "";
     width: calc(100% - 20px);
     height: 1px;
@@ -197,6 +205,10 @@ form textarea {
     position: absolute;
     bottom: 0;
     left: 10px;
+}
+
+.menu li:nth-last-child(1 of :not(.active))::after {
+    display: none;
 }
 
 .menu-open {

@@ -92,6 +92,10 @@ form input {
     border-radius: 5px;
 }
 
+.btnCloseForm {
+    border: none;
+    background: #DB8876;
+}
 
 
 
@@ -140,10 +144,14 @@ form textarea {
     transform: rotate(180deg);
 }
 
+.fa-chevron-down-rotate {
+    transform: rotate(180deg);
+}
+
 .dropdown {
-    min-width: 15em;
+    width: 150px;
     position: relative;
-    margin: 1em;
+    margin: 16px;
 }
 
 .dropdown * {
@@ -156,9 +164,9 @@ form textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px #901C1C solid;
+    border: none;
     border-radius: 5px;
-    height: 40px;
+    height: 50px;
     width: 150px;
     padding: 20px;
     cursor: pointer;
@@ -171,16 +179,14 @@ form textarea {
 
 .menu {
     list-style: none;
-    padding: 0.2em 0.5em;
+    padding: 3px 6px;
     margin-top: 0;
     background: #901C1C;
     border-radius: 0 0 5px 5px;
     color: #fff;
     position: absolute;
-    top: 38px;
-    left: 75px;
+    top: 45px;
     width: 150px;
-    transform: translateX(-50%);
     opacity: 0;
     display: none;
     transition: 0.2s;
@@ -188,28 +194,66 @@ form textarea {
 }
 
 .menu li {
-    padding: 0.7em 0.8em;
+    padding: 11px 8px;
     cursor: pointer;
     position: relative;
+}
+
+.menu button {
+    /*padding: 11px 10px;*/
+    cursor: pointer;
+    position: relative;
+    background: #901C1C;
+    border: none;
+    color: white;
+    font-size: 16px;
 }
 
 .menu li.active {
     display: none;
 }
 
+/* menu button.active {
+    display: none;
+} */
+
 .menu li:not(.active)::after {
     content: "";
     width: calc(100% - 20px);
-    height: 1px;
+    height: 1.5px;
     background: white;
     position: absolute;
     bottom: 0;
     left: 10px;
 }
 
+/* .menu button:not(.active)::after {
+    content: "";
+    width: calc(100% - 20px);
+    height: 1.5px;
+    background: white;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+} */
+
+.select-clicked::after {
+    content: "";
+    width: calc(100% - 40px);
+    height: 1.5px;
+    background: white;
+    position: absolute;
+    bottom: 5px;
+    left: 16px;
+}
+
 .menu li:nth-last-child(1 of :not(.active))::after {
     display: none;
 }
+
+/* .menu button:nth-last-child(1 of :not(.active))::after {
+    display: none;
+} */
 
 .menu-open {
     display: block;

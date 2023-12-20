@@ -1,6 +1,7 @@
 // VARIABLES
 const modalBtn = document.querySelectorAll(".open");
 const modalBtnClose = document.querySelectorAll(".close"); // bouton croix
+const btnCloseForm = document.querySelectorAll(".btnCloseForm");
 //const btnCloseEnd = document.querySelectorAll(".btnClose"); // bouton 'envoyer'
 //const btnCloseEnd = document.querySelectorAll(".contact_button"); // bouton 'envoyer'
 
@@ -46,8 +47,9 @@ function closeModal() {
   myBody.classList.remove("isModalOpen");
   myBody.setAttribute('aria-hidden', 'false');
   modal.setAttribute('aria-hidden', 'true');
-  modalBtn.focus();
-
+  //modalBtn.focus();
+  btnCloseForm.focus();
+  
   resetMyForm();
 }
 

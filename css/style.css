@@ -390,6 +390,7 @@ option {
     font-size: 70px;
     cursor: pointer;
     top: 50%;
+    color: #901C1C;
 }
 
 .fa-chevron-left {

@@ -14,7 +14,7 @@
 
 <body aria-hidden="false">
   <header>
-    <a href="index.html" tabindex="1">
+    <a href="index.html" tabindex="1" aria-label="retour à la page d'accueil">
       <img src="assets/images/logo.png" class="logo" alt="logo FishEye" />
     </a>
   </header>
@@ -22,12 +22,10 @@
     <div class="photograph-header">
       <div class="descriptif">
         <h1 class="name" id="userName" tabindex="2"></h1>
-        <p class="city" id="userCity" tabindex="3"></p>
-        <p class="userTagline" id="userTagline" tabindex="4"></p>
+        <p class="city" id="userCity" tabindex="3" aria-label="localisation du photographe"></p>
+        <p class="userTagline" id="userTagline" tabindex="4" aria-label="citation du photographe"></p>
       </div>
-      <div class="coordonnees"></div>
       <button class="contact_button open" tabindex="6" onclick="displayModal()">Contactez-moi</button>
-      <div class="portraitPhotographe"></div>
       <div class="photographerImage">
         <img src="" alt="" id="userImage" tabindex="5">
       </div>
@@ -51,13 +49,14 @@
     </div>
   </div> -->
 
-    <div class="triMedias">
+    <!-- <div class="triMedias">
       <p class="orderBy" tabindex="7">Trier par</p>
 
       <div class="dropdown btnOrderBy">
         <button class="select" tabindex="8">
           <span class="selected">Popularité</span>
-          <div class="caret"></div>
+          <!--<div class="caret"></div>
+          <i class="fa-solid fa-chevron-down"></i>
         </button>
         <ul class="menu">
           <li data-value="date" class="btnSelect" tabindex="9">Date</li>
@@ -65,16 +64,36 @@
           <li data-value="title" class="btnSelect" tabindex="11">Titre</li>
         </ul>
       </div>
+    </div>-->
+
+
+
+    <div class="triMedias" aria-label="menu déroulant">
+      <p class="orderBy" tabindex="7">Trier par</p>
+
+      <div class="dropdown btnOrderBy">
+        <button class="select" tabindex="8">
+          <span class="selected">Popularité</span>
+          <!--<div class="caret"></div>-->
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <ul class="menu">
+          <li><button data-value="date" class="btnSelect" tabindex="9">Date</button></li>
+          <li class="active"><button data-value="popularity" class="btnSelect active" tabindex="10">Popularité</button>
+          </li>
+          <li><button data-value="title" class="btnSelect" tabindex="11">Titre</button></li>
+        </ul>
+      </div>
     </div>
 
     <!-- GALERIE PHOTOS -->
-    <div class="mediaPhotos" id="mediaPhotos"></div>
+    <div class="mediaPhotos" id="mediaPhotos" aria-label="gallerie photos du photographe"></div>
 
 
     <!-- ENCART TJM ET TOTAL COEURS -->
     <div class="encart">
       <div class="totalLikes">
-        <p id="totalLikes" class="numberLike"></p>
+        <p id="totalLikes" class="numberLike" aria-label="nombre de likes total"></p>
         <!-- COEUR NOIR REMPLI -->
         <svg width="18" height="15" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -83,50 +102,53 @@
         </svg>
       </div>
       <div id="price">
-        <p id="tjm"></p>
+        <p id="tjm" aria-label="prix à la journée"></p>
       </div>
     </div>
 
   </main>
   <!-- ENCART CARROUSEL  style="display: block;"-->
-  <div class="carrousel" id="carrousel">
+  <div class="carrousel" id="carrousel" aria-label="carrousel">
     <div class="containerCarrousel"></div>
-    <i class="fa-solid fa-xmark closeCarrousel"></i>
-    <i class="fa-solid fa-chevron-left chevronDG"></i>
-    <i class="fa-solid fa-chevron-right chevronDG"></i>
+    <button><i class="fa-solid fa-xmark closeCarrousel" aria-label="fermer le carrousel"></i></button>
+    <button><i class="fa-solid fa-chevron-left chevronDG" aria-label="image précédente"></i></button>
+    <button><i class="fa-solid fa-chevron-right chevronDG" aria-label="image suivante"></i></button>
   </div>
 
   <!-- FENETRE MODALE -->
-  <div id="contact_modal" role="dialog" aria-hidden="true">
+  <div id="contact_modal" role="dialog" aria-hidden="true" aria-label="formulaire de contact">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        butt
-        <img id="btnModalContactClose" src="assets/icons/close.svg" class="close" alt="fermer formulaire" />
+        <button class="btnCloseForm">
+          <img id="btnModalContactClose" src="assets/icons/close.svg" class="close" alt="fermer le formulaire"
+            aria-label="fermer le formulaire" />
+        </button>
       </header>
       <form class="openForm" id="openForm">
         <div>
           <label for="firstName">Prénom</label>
-          <input type="text" id="firstName" name="firstName" />
-          <span class="error" id="firstNameError"></span>
+          <input type="text" id="firstName" name="firstName" aria-label="entrez votre prénom" />
+          <span class="error" id="firstNameError" aria-label="champs incorrect"></span>
         </div>
         <div>
           <label for="lastName">Nom</label>
-          <input type="text" id="lastName" name="lastName" />
-          <span class="error" id="lastNameError"></span>
+          <input type="text" id="lastName" name="lastName" aria-label="entrez votre nom" />
+          <span class="error" id="lastNameError" aria-label="champs incorrect"></span>
         </div>
         <div>
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" />
-          <span class="error" id="emailError"></span>
+          <input type="email" id="email" name="email" aria-label="entrez votre adresse mail" />
+          <span class="error" id="emailError" aria-label="champs incorrect"></span>
         </div>
         <div>
           <label for="message">Votre message</label>
-          <textarea name="message" id="message" cols="100" rows="10"></textarea>
-          <span class="error" id="messageError"></span>
+          <textarea name="message" id="message" cols="100" rows="10" aria-label="entrez votre message"></textarea>
+          <span class="error" id="messageError" aria-label="champs incorrect"></span>
         </div>
-        <input class="contact_button" type="submit" id="button" value="Envoyer" formnovalidate="formnovalidate" />
-        <span class="error" id="btnError"></span>
+        <input class="contact_button" type="submit" id="button" value="Envoyer" formnovalidate="formnovalidate"
+          aria-label="bouton de validation du formulaire" />
+        <span class="error" id="btnError" aria-label="champs incorrect" aria-label=" des champs sont incorrects"></span>
       </form>
     </div>
   </div>

@@ -42,7 +42,7 @@ async function getPhotographer() {
     // FactoryMedia
     const newMedia = mediaFactory(itemMedia, 'V1')
 
-    console.log(newMedia)
+    //console.log(newMedia)
 
     if (newMedia.photographerId === photographerID) {
       medias.push({ ...newMedia, isLiked: false });

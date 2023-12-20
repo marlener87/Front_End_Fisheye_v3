@@ -28,13 +28,13 @@ function displayPhotographers(objectPhotographers) {
 
     // Modification du contenu de la nouvelle div
     divCard.innerHTML = `
-        <a href="photographer.html?id=${photographer.id}" class="lienPhotographe">
+        <a href="photographer.html?id=${photographer.id}" class="lienPhotographe" aria-label="bouton portrait et nom du photographe" tabindex="3">
           <img src="../assets/photographersIDPhotos/${photographer.portrait} " alt="${photographer.name}" class="portrait">
-          <h2 class="name">${photographer.name}</h2>
+          <h2 class="name" aria-label="nom du photographe">${photographer.name}</h2>
         </a>
-        <p class="localisation">${photographer.city}, ${photographer.country}</p>
-        <p class="tagline">${photographer.tagline}</p>
-        <p class="price">${photographer.price}€/jour</p>
+        <p class="localisation" aria-label="localisation du photographe" tabindex="4">${photographer.city}, ${photographer.country}</p>
+        <p class="tagline" aria-label="citation du photographe" tabindex="5">${photographer.tagline}</p>
+        <p class="price" aria-label="tarif à la journée du photographe" tabindex="6">${photographer.price}€/jour</p>
     `;
 
     // Ajout de la div dans le DOM

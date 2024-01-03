@@ -6,8 +6,10 @@ const photographerID = parseInt(url.searchParams.get("id"));
 const mediaPhotos = document.querySelector("#mediaPhotos");
 const totalLikesDOM = document.querySelector("#totalLikes");
 const carrouselPhotos = document.querySelector(".containerCarrousel");
-const btnSliderNext = document.querySelector(".fa-chevron-right");
-const btnSliderPrevious = document.querySelector(".fa-chevron-left");
+//const btnSliderNext = document.querySelector(".fa-chevron-right");
+//const btnSliderPrevious = document.querySelector(".fa-chevron-left");
+const btnSliderNext = document.querySelector(".chevronD");
+const btnSliderPrevious = document.querySelector(".chevronG");
 
 let orderByType = "popularity"; 
 const btnList = document.querySelectorAll(".btnSelect");
@@ -62,18 +64,6 @@ async function getPhotographer() {
  * @param {*} insertPhotographer 
  */
 function displayPhotographer(insertPhotographer) {
-  
-  // const photographer = mediaFactory(insertPhotographer, 'V1');
-
-  // userName.innerHTML = photographer.name;
-  // userCity.innerHTML = `${photographer.city}, ${photographer.country}`;
-  // userTagline.innerHTML = photographer.tagline;
-
-  // userImage.src = `./assets/PhotographersIDPhotos/${photographer.portrait}`;
-  // userImage.alt = `Portrait du photographe ${photographer.name}`;
-  // // afficher le prix tjm
-  // tjm.innerHTML = `${photographer.price}€ / jour`;
-  
   userName.innerHTML = insertPhotographer.name;
   userCity.innerHTML = `${insertPhotographer.city}, ${insertPhotographer.country}`;
   userTagline.innerHTML = insertPhotographer.tagline;
@@ -93,6 +83,7 @@ function displayMedias(medias) {
   // Réinitialise l'affichage
   mediaPhotos.innerHTML = "";
 
+  let tabIndexMedias = 100;
   // parcours tous les médias, une boucle
   medias.forEach((media, index) => {
     const cardPhoto = document.createElement("div");
@@ -106,12 +97,12 @@ function displayMedias(medias) {
     </video>`;
 
     cardPhoto.innerHTML = `
-    <button class="imagePhotographe" id="imagePhotographe">${mediaContent}</button>
+    <button class="imagePhotographe" id="imagePhotographe" tabindex="${tabIndexMedias++}">${mediaContent}</button>
     <div class="infoPhoto">
-      <p id="titre"  >${media.title}</p>
+      <p id="titre" tabindex="${tabIndexMedias++}">${media.title}</p>
       <div class="likes">
-        <span class="card-likes" data-id="${media.id}">${media.likes}</span>
-        <button   class="btnLike ${media.isLiked ? "isLiked" : ""}" data-id="${media.id}">
+        <span class="card-likes" data-id="${media.id}" tabindex="${tabIndexMedias++}">${media.likes}</span>
+        <button class="btnLike ${media.isLiked ? "isLiked" : ""}" data-id="${media.id}" tabindex="${tabIndexMedias++}" aria-label="coeur like">
           <i class="fa-regular fa-heart"></i>
           <i class="fa-solid fa-heart fa-coeur"></i>
         </button>
@@ -254,6 +245,7 @@ function initCarrousel(arrayImg) {
   arrayImg.forEach((media) => {
     const carrouselPhoto = document.createElement("div");
     carrouselPhoto.classList.add("carrouselPhoto");
+    carrouselPhoto.setAttribute("tabindex", "302")
 
     const mediaContent = media.image
     ? `<img src="./FishEye_Photos/${photographerID}/${media.image}" alt="${media.title}" id="carrouselImg ${media.id}" class="carrouselImg">` 
@@ -330,26 +322,6 @@ async function init() {
     displaySlide(slideIndex);
   })
 
-  
-  document.keydown('click', (e) => {
-    const keyCode = e.key ? e.key : e.which
-
-    if(keyCode === 39) {
-      btnSliderNext();
-    } else if(keyCode === 37) {
-      btnSliderPrevious();
-    }
-  })
 }
 
 init();
-
-
-
-
-/**
- * Dropdown : 
- * - le content n'a pas la même taille que le boutton en lui même
- * - Flèche qu'est pas la bonne
- * - On retire l'element selectionner 
- */

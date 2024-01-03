@@ -239,7 +239,7 @@ form textarea {
 
 .select-clicked::after {
     content: "";
-    width: calc(100% - 40px);
+    width: calc(100% - 32px);
     height: 1.5px;
     background: white;
     position: absolute;

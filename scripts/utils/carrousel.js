@@ -12,6 +12,7 @@ function displayCarrousel() {
   carrousel.style.display = "block";
 
   document.body.classList.add("isModalOpen");
+  document.querySelector(".closeCarrousel").focus();    
 }
 
 carrouselOpen.forEach((btn) => btn.addEventListener("click", displayCarrousel));

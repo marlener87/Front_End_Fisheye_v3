@@ -1,9 +1,6 @@
 // VARIABLES
 const modalBtn = document.querySelectorAll(".open");
-const modalBtnClose = document.querySelectorAll(".close"); // bouton croix
 const btnCloseForm = document.querySelectorAll(".btnCloseForm");
-//const btnCloseEnd = document.querySelectorAll(".btnClose"); // bouton 'envoyer'
-//const btnCloseEnd = document.querySelectorAll(".contact_button"); // bouton 'envoyer'
 
 const modal = document.querySelector("#contact_modal");
 
@@ -30,8 +27,8 @@ function displayModal() {
   myBody.setAttribute('aria-hidden', 'true');
   modal.setAttribute('aria-hidden', 'false');
   
-  
-  document.getElementById('btnModalContactClose').focus()
+  document.querySelector('.btnCloseForm').focus()
+  document.querySelector('.btnCloseForm').setAttribute('tabindex', '201')
 }
 
 function closeModal() {
@@ -48,8 +45,8 @@ function closeModal() {
   myBody.setAttribute('aria-hidden', 'false');
   modal.setAttribute('aria-hidden', 'true');
   //modalBtn.focus();
-  btnCloseForm.focus();
   
+
   resetMyForm();
 }
 
@@ -227,8 +224,7 @@ inputMessage.addEventListener("textarea", (event) => {
 modalBtn.forEach((btn) => btn.addEventListener("click", displayModal));
 
 // close modal event
-modalBtnClose.forEach((btn) => btn.addEventListener("click", closeModal));
-//btnCloseEnd.forEach((btn) => btn.addEventListener("click", closeModal));
+btnCloseForm.forEach((btn) => btn.addEventListener("click", closeModal));
 
 
 // ACCESSIBILITE

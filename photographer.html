@@ -20,68 +20,40 @@
   </header>
   <main id="main">
     <div class="photograph-header">
-      <div class="descriptif">
-        <h1 class="name" id="userName" tabindex="2"></h1>
+      <div class="descriptif" aria-label="description et contact du photographe" tabindex="2">
+        <!-- <h1 class="name" id="userName" tabindex="2" aria-label="nom du photographe"></h1>
         <p class="city" id="userCity" tabindex="3" aria-label="localisation du photographe"></p>
-        <p class="userTagline" id="userTagline" tabindex="4" aria-label="citation du photographe"></p>
+        <p class="userTagline" id="userTagline" tabindex="4" aria-label="citation du photographe"></p>            -->
+        <h1 class="name" id="userName" tabindex="3"></h1>
+        <p class="city" id="userCity" tabindex="4"></p>
+        <p class="userTagline" id="userTagline" tabindex="5"></p>
       </div>
       <button class="contact_button open" tabindex="6" onclick="displayModal()">Contactez-moi</button>
       <div class="photographerImage">
-        <img src="" alt="" id="userImage" tabindex="5">
+        <img src="" alt="" id="userImage" tabindex="7">
       </div>
     </div>
 
-
-    <!--<div class="triMedias">
-    <p class="orderBy">Trier par</p>
-
-    <div class="tri">
-      <label for="orderBy" class="btnOrderBy">Popularité
-        <div class="caret"></div>
-      </label>
-      <input type="checkbox" name="orderBy" id="orderBy">
-
-      <div class="dropdown-content">
-        <button data-value="popularity" class="btnSelect">Popularité</button>
-        <button data-value="date" class="btnSelect">Date</button>
-        <button data-value="title" class="btnSelect">Titre</button>
-      </div>
-    </div>
-  </div> -->
-
-    <!-- <div class="triMedias">
-      <p class="orderBy" tabindex="7">Trier par</p>
-
-      <div class="dropdown btnOrderBy">
-        <button class="select" tabindex="8">
-          <span class="selected">Popularité</span>
-          <!--<div class="caret"></div>
-          <i class="fa-solid fa-chevron-down"></i>
-        </button>
-        <ul class="menu">
-          <li data-value="date" class="btnSelect" tabindex="9">Date</li>
-          <li data-value="popularity" class="btnSelect active" tabindex="10">Popularité</li>
-          <li data-value="title" class="btnSelect" tabindex="11">Titre</li>
-        </ul>
-      </div>
-    </div>-->
-
-
-
+    <!-- DROPDOWN -->
     <div class="triMedias" aria-label="menu déroulant">
-      <p class="orderBy" tabindex="7">Trier par</p>
+      <p class="orderBy" tabindex="12">Trier par</p>
 
       <div class="dropdown btnOrderBy">
-        <button class="select" tabindex="8">
+        <button class="select" tabindex="13">
           <span class="selected">Popularité</span>
           <!--<div class="caret"></div>-->
           <i class="fa-solid fa-chevron-down"></i>
         </button>
         <ul class="menu">
-          <li><button data-value="date" class="btnSelect" tabindex="9">Date</button></li>
-          <li class="active"><button data-value="popularity" class="btnSelect active" tabindex="10">Popularité</button>
+          <li>
+            <button data-value="date" class="btnSelect" tabindex="14">Date</button>
           </li>
-          <li><button data-value="title" class="btnSelect" tabindex="11">Titre</button></li>
+          <li class="active">
+            <button data-value="popularity" class="btnSelect active" tabindex="15">Popularité</button>
+          </li>
+          <li>
+            <button data-value="title" class="btnSelect" tabindex="16">Titre</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -92,8 +64,8 @@
 
     <!-- ENCART TJM ET TOTAL COEURS -->
     <div class="encart">
-      <div class="totalLikes">
-        <p id="totalLikes" class="numberLike" aria-label="nombre de likes total"></p>
+      <div class="totalLikes" aria-label="nombre de likes total" tabindex="8">
+        <p id="totalLikes" class="numberLike" tabindex="9"></p>
         <!-- COEUR NOIR REMPLI -->
         <svg width="18" height="15" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -101,8 +73,8 @@
             fill="black" />
         </svg>
       </div>
-      <div id="price">
-        <p id="tjm" aria-label="prix à la journée"></p>
+      <div id="price" aria-label="prix à la journée" tabindex="10">
+        <p id="tjm" tabindex="11"></p>
       </div>
     </div>
 
@@ -110,9 +82,12 @@
   <!-- ENCART CARROUSEL  style="display: block;"-->
   <div class="carrousel" id="carrousel" aria-label="carrousel">
     <div class="containerCarrousel"></div>
-    <button><i class="fa-solid fa-xmark closeCarrousel" aria-label="fermer le carrousel"></i></button>
-    <button><i class="fa-solid fa-chevron-left chevronDG" aria-label="image précédente"></i></button>
-    <button><i class="fa-solid fa-chevron-right chevronDG" aria-label="image suivante"></i></button>
+    <button class="closeCarrousel" tabindex="300"><i class="fa-solid fa-xmark"
+        aria-label="fermer le carrousel"></i></button>
+    <button class="chevronG" tabindex="301"><i class="fa-solid fa-chevron-left"
+        aria-label="image précédente"></i></button>
+    <button class="chevronD" tabindex="303"><i class="fa-solid fa-chevron-right"
+        aria-label="image suivante"></i></button>
   </div>
 
   <!-- FENETRE MODALE -->
@@ -127,28 +102,30 @@
       </header>
       <form class="openForm" id="openForm">
         <div>
-          <label for="firstName">Prénom</label>
-          <input type="text" id="firstName" name="firstName" aria-label="entrez votre prénom" />
-          <span class="error" id="firstNameError" aria-label="champs incorrect"></span>
+          <label for="firstName" tabindex="202">Prénom</label>
+          <input type="text" id="firstName" name="firstName" aria-label="entrez votre prénom" tabindex="203" />
+          <span class="error" id="firstNameError" aria-label="champs incorrect" tabindex="204"></span>
         </div>
         <div>
-          <label for="lastName">Nom</label>
-          <input type="text" id="lastName" name="lastName" aria-label="entrez votre nom" />
-          <span class="error" id="lastNameError" aria-label="champs incorrect"></span>
+          <label for="lastName" tabindex="205">Nom</label>
+          <input type="text" id="lastName" name="lastName" aria-label="entrez votre nom" tabindex="206" />
+          <span class="error" id="lastNameError" aria-label="champs incorrect" tabindex="207"></span>
         </div>
         <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" aria-label="entrez votre adresse mail" />
-          <span class="error" id="emailError" aria-label="champs incorrect"></span>
+          <label for="email" tabindex="208">Email</label>
+          <input type="email" id="email" name="email" aria-label="entrez votre adresse mail" tabindex="209" />
+          <span class="error" id="emailError" aria-label="champs incorrect" tabindex="210"></span>
         </div>
         <div>
-          <label for="message">Votre message</label>
-          <textarea name="message" id="message" cols="100" rows="10" aria-label="entrez votre message"></textarea>
-          <span class="error" id="messageError" aria-label="champs incorrect"></span>
+          <label for="message" tabindex="211">Votre message</label>
+          <textarea name="message" id="message" cols="100" rows="10" aria-label="entrez votre message"
+            tabindex="212"></textarea>
+          <span class="error" id="messageError" aria-label="champs incorrect" tabindex="213"></span>
         </div>
         <input class="contact_button" type="submit" id="button" value="Envoyer" formnovalidate="formnovalidate"
-          aria-label="bouton de validation du formulaire" />
-        <span class="error" id="btnError" aria-label="champs incorrect" aria-label=" des champs sont incorrects"></span>
+          aria-label="bouton de validation du formulaire" tabindex="214" />
+        <span class="error" id="btnError" aria-label="champs incorrect" aria-label=" des champs sont incorrects"
+          tabindex="215 "></span>
       </form>
     </div>
   </div>

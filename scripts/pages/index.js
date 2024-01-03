@@ -17,6 +17,7 @@ async function getPhotographers() {
  * function qui va créer la carte du photographe, avec son nom, prénom, photo, ville, tagline et TJM
  */
 function displayPhotographers(objectPhotographers) {
+  let tabindexCounter = 100;
   objectPhotographers.photographers.forEach((item) => {
 
     // passer ces résultats dans un pipeline => ce truc me retourne TOUJOURS le même object
@@ -28,13 +29,13 @@ function displayPhotographers(objectPhotographers) {
 
     // Modification du contenu de la nouvelle div
     divCard.innerHTML = `
-        <a href="photographer.html?id=${photographer.id}" class="lienPhotographe" aria-label="bouton portrait et nom du photographe" tabindex="3">
-          <img src="../assets/photographersIDPhotos/${photographer.portrait} " alt="${photographer.name}" class="portrait">
+        <a href="photographer.html?id=${photographer.id}" class="lienPhotographe" aria-label="bouton portrait et nom du photographe" tabindex="${tabindexCounter++}">
+          <img src="../assets/photographersIDPhotos/${photographer.portrait}" alt="${photographer.name}" class="portrait">
           <h2 class="name" aria-label="nom du photographe">${photographer.name}</h2>
         </a>
-        <p class="localisation" aria-label="localisation du photographe" tabindex="4">${photographer.city}, ${photographer.country}</p>
-        <p class="tagline" aria-label="citation du photographe" tabindex="5">${photographer.tagline}</p>
-        <p class="price" aria-label="tarif à la journée du photographe" tabindex="6">${photographer.price}€/jour</p>
+        <p class="localisation" aria-label="localisation du photographe" tabindex="${tabindexCounter++}">${photographer.city}, ${photographer.country}</p>
+        <p class="tagline" aria-label="citation du photographe" tabindex="${tabindexCounter++}">${photographer.tagline}</p>
+        <p class="price" aria-label="tarif à la journée du photographe" tabindex="${tabindexCounter++}">${photographer.price}€/jour</p>
     `;
 
     // Ajout de la div dans le DOM

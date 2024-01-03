@@ -385,22 +385,31 @@ option {
     font-size: 20px;
 }
 
-.chevronDG {
+.chevronD,
+.chevronG {
     position: absolute;
     font-size: 70px;
     cursor: pointer;
     top: 50%;
     color: #901C1C;
+    border: none;
+    background-color: aliceblue;
+}
+
+.chevronD {
+    right: 10%;
+}
+
+.chevronG {
+    left: 10%;
 }
 
 .fa-chevron-left {
-    left: 10%;
     opacity: 0.4;
     transition: all 0.3s ease;
 }
 
 .fa-chevron-right {
-    right: 10%;
     opacity: 0.4;
     transition: all 0.3s ease;
 }
@@ -419,4 +428,6 @@ option {
     top: 5%;
     right: 10%;
     cursor: pointer;
+    border: none;
+    background: aliceblue;
 }

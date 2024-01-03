@@ -100,7 +100,7 @@ function displayMedias(medias) {
     <button class="imagePhotographe" id="imagePhotographe" tabindex="${tabIndexMedias++}">${mediaContent}</button>
     <div class="infoPhoto">
       <p id="titre" tabindex="${tabIndexMedias++}">${media.title}</p>
-      <div class="likes">
+      <div class="likes" aria-label="nombre de likes total sur cette image" tabindex="${tabIndexMedias++}">
         <span class="card-likes" data-id="${media.id}" tabindex="${tabIndexMedias++}">${media.likes}</span>
         <button class="btnLike ${media.isLiked ? "isLiked" : ""}" data-id="${media.id}" tabindex="${tabIndexMedias++}" aria-label="coeur like">
           <i class="fa-regular fa-heart"></i>
@@ -284,6 +284,21 @@ function displaySlide(indexSlide) {
   carrouselPhotos.setAttribute('data-position', indexSlide)
 }
 
+// function btnSliderPrevious1() {
+//   btnSliderPrevious.addEventListener('click', () => {
+//     const position = carrouselPhotos.getAttribute('data-position')
+//     let slideIndex = parseInt(position)
+    
+//     if(slideIndex > 0) {
+//         slideIndex--
+//     } else {
+//         slideIndex = newMedias.length - 1
+//     }
+//     displaySlide(slideIndex);
+//   })
+
+// }
+
 
 
 /**
@@ -322,6 +337,42 @@ async function init() {
     displaySlide(slideIndex);
   })
 
+  document.addEventListener('keydown', (e) => { 
+    if(e.key === "ArrowRight") {
+      e.preventDefault();
+      console.log('flèche droite');
+      btnSliderNext.addEventListener('click', () => {
+        const position = carrouselPhotos.getAttribute('data-position')
+        let slideIndex = parseInt(position)
+    
+          if(slideIndex < newMedias.length - 1) {
+              slideIndex++
+          } else {
+              slideIndex = 0;
+          }
+        displaySlide(slideIndex);
+      }) 
+    }
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      console.log('flèche gauche');
+      //btnSliderPrevious1();
+      // btnSliderPrevious.addEventListener('click', () => {
+      //   const position = carrouselPhotos.getAttribute('data-position')
+      //   let slideIndex = parseInt(position)
+        
+      //   if(slideIndex > 0) {
+      //       slideIndex--
+      //   } else {
+      //       slideIndex = newMedias.length - 1
+      //   }
+      //   displaySlide(slideIndex);
+      // })
+      } 
+   })
 }
 
 init();

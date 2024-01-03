@@ -19,11 +19,9 @@
     </a>
   </header>
   <main id="main">
-    <div class="photograph-header">
-      <div class="descriptif" aria-label="description et contact du photographe" tabindex="2">
-        <!-- <h1 class="name" id="userName" tabindex="2" aria-label="nom du photographe"></h1>
-        <p class="city" id="userCity" tabindex="3" aria-label="localisation du photographe"></p>
-        <p class="userTagline" id="userTagline" tabindex="4" aria-label="citation du photographe"></p>            -->
+    <!-- DESCRIPTION ET CONTACT DU PHOTOGRAPHE -->
+    <section class="photograph-header" aria-label="description et contact du photographe" tabindex="2">
+      <div class="descriptif">
         <h1 class="name" id="userName" tabindex="3"></h1>
         <p class="city" id="userCity" tabindex="4"></p>
         <p class="userTagline" id="userTagline" tabindex="5"></p>
@@ -32,16 +30,15 @@
       <div class="photographerImage">
         <img src="" alt="" id="userImage" tabindex="7">
       </div>
-    </div>
+    </section>
 
     <!-- DROPDOWN -->
-    <div class="triMedias" aria-label="menu déroulant">
+    <section class="triMedias" aria-label="menu déroulant">
       <p class="orderBy" tabindex="12">Trier par</p>
 
       <div class="dropdown btnOrderBy">
         <button class="select" tabindex="13">
           <span class="selected">Popularité</span>
-          <!--<div class="caret"></div>-->
           <i class="fa-solid fa-chevron-down"></i>
         </button>
         <ul class="menu">
@@ -56,14 +53,14 @@
           </li>
         </ul>
       </div>
-    </div>
+    </section>
 
     <!-- GALERIE PHOTOS -->
-    <div class="mediaPhotos" id="mediaPhotos" aria-label="gallerie photos du photographe"></div>
+    <div class="mediaPhotos" id="mediaPhotos" aria-label="gallerie photos du photographe" tabindex="17"></div>
 
 
     <!-- ENCART TJM ET TOTAL COEURS -->
-    <div class="encart">
+    <aside class="encart">
       <div class="totalLikes" aria-label="nombre de likes total" tabindex="8">
         <p id="totalLikes" class="numberLike" tabindex="9"></p>
         <!-- COEUR NOIR REMPLI -->
@@ -76,22 +73,23 @@
       <div id="price" aria-label="prix à la journée" tabindex="10">
         <p id="tjm" tabindex="11"></p>
       </div>
-    </div>
+    </aside>
 
   </main>
+
   <!-- ENCART CARROUSEL  style="display: block;"-->
-  <div class="carrousel" id="carrousel" aria-label="carrousel">
+  <section class="carrousel" id="carrousel" aria-label="carrousel">
     <div class="containerCarrousel"></div>
     <button class="closeCarrousel" tabindex="300"><i class="fa-solid fa-xmark"
         aria-label="fermer le carrousel"></i></button>
-    <button class="chevronG" tabindex="301"><i class="fa-solid fa-chevron-left"
+    <button class="chevron chevronG" tabindex="301"><i class="fa-solid fa-chevron-left"
         aria-label="image précédente"></i></button>
-    <button class="chevronD" tabindex="303"><i class="fa-solid fa-chevron-right"
+    <button class="chevron chevronD" tabindex="303"><i class="fa-solid fa-chevron-right"
         aria-label="image suivante"></i></button>
-  </div>
+  </section>
 
-  <!-- FENETRE MODALE -->
-  <div id="contact_modal" role="dialog" aria-hidden="true" aria-label="formulaire de contact">
+  <!-- FENETRE MODALE FORMAULAIRE -->
+  <section id="contact_modal" role="dialog" aria-hidden="true" aria-label="formulaire de contact">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
@@ -128,7 +126,7 @@
           tabindex="215 "></span>
       </form>
     </div>
-  </div>
+  </section>
 
 
   <script src="scripts/models/photographerV1.js"></script>

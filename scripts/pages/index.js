@@ -14,14 +14,15 @@ async function getPhotographers() {
 }
 
 /**
- * function qui va créer la carte du photographe, avec son nom, prénom, photo, ville, tagline et TJM
+ * function qui va créer la carte du photographe, avec son nom, prénom, photo, ville, tagline, portrait et TJM
+ * @param {*} objectPhotographers
  */
 function displayPhotographers(objectPhotographers) {
   let tabindexCounter = 100;
   objectPhotographers.photographers.forEach((item) => {
 
     // passer ces résultats dans un pipeline => ce truc me retourne TOUJOURS le même object
-    const photographer = PhotographerFactory(item, 'V1')
+    const photographer = PhotographerFactory(item, 'V1');
 
     // Création d'une nouvelle div
     const divCard = document.createElement("div"); 

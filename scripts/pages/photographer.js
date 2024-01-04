@@ -6,8 +6,6 @@ const photographerID = parseInt(url.searchParams.get("id"));
 const mediaPhotos = document.querySelector("#mediaPhotos");
 const totalLikesDOM = document.querySelector("#totalLikes");
 const carrouselPhotos = document.querySelector(".containerCarrousel");
-//const btnSliderNext = document.querySelector(".fa-chevron-right");
-//const btnSliderPrevious = document.querySelector(".fa-chevron-left");
 const btnSliderNext = document.querySelector(".chevronD");
 const btnSliderPrevious = document.querySelector(".chevronG");
 
@@ -35,24 +33,20 @@ async function getPhotographer() {
 
     if (newItem.id === photographerID) {
       photographer = newItem;
-    }
+    };
   });
 
   let medias = []; // c'est un tableau
   results.media.forEach((itemMedia) => {
 
     // FactoryMedia
-    const newMedia = mediaFactory(itemMedia, 'V1')
+    const newMedia = mediaFactory(itemMedia, 'V1');
 
     //console.log(newMedia)
 
     if (newMedia.photographerId === photographerID) {
       medias.push({ ...newMedia, isLiked: false });
     }
-
-    // if (itemMedia.photographerId === photographerID) {
-    //   medias.push({ ...itemMedia, isLiked: false });
-    // }
   });
 
   return { photographer, medias };
@@ -107,8 +101,7 @@ function displayMedias(medias) {
           <i class="fa-solid fa-heart fa-coeur"></i>
         </button>
       </div>
-    </div> 
-    `;
+    </div> `;
     //console.log(cardPhoto);
     mediaPhotos.appendChild(cardPhoto);
 
@@ -131,7 +124,7 @@ function displayMedias(medias) {
         cardLikes.innerHTML = media.likes + 1;
       } else {
         cardLikes.innerHTML = media.likes;
-      }
+      };
 
       /*
       if(media.isLiked === true) équivaut à if(media.isLiked)
@@ -144,7 +137,7 @@ function displayMedias(medias) {
         }
       } else {
         btn.classList.remove("isLiked");
-      }
+      };
 
       displayLikes(medias);
     });
@@ -245,7 +238,7 @@ function initCarrousel(arrayImg) {
   arrayImg.forEach((media) => {
     const carrouselPhoto = document.createElement("div");
     carrouselPhoto.classList.add("carrouselPhoto");
-    carrouselPhoto.setAttribute("tabindex", "302")
+    carrouselPhoto.setAttribute("tabindex", "302");
 
     const mediaContent = media.image
     ? `<img src="./FishEye_Photos/${photographerID}/${media.image}" alt="${media.title}" id="carrouselImg ${media.id}" class="carrouselImg">` 
@@ -256,11 +249,9 @@ function initCarrousel(arrayImg) {
 
     carrouselPhoto.innerHTML = `
       ${mediaContent}
-
       <div class="infoPhoto">
         <p id="carrouselTitre" class="carrouselTitre">${media.title}</p>
       </div>`;
-      //
     //console.log(carrouselPhoto);
     carrouselPhotos.appendChild(carrouselPhoto);
   });
@@ -341,17 +332,16 @@ async function init() {
     if(e.key === "ArrowRight") {
       e.preventDefault();
       console.log('flèche droite');
-      btnSliderNext.addEventListener('click', () => {
-        const position = carrouselPhotos.getAttribute('data-position')
-        let slideIndex = parseInt(position)
-    
-          if(slideIndex < newMedias.length - 1) {
-              slideIndex++
-          } else {
-              slideIndex = 0;
-          }
-        displaySlide(slideIndex);
-      }) 
+      
+      const position = carrouselPhotos.getAttribute('data-position')
+      let slideIndex = parseInt(position)
+
+        if(slideIndex < newMedias.length - 1) {
+            slideIndex++
+        } else {
+            slideIndex = 0;
+        }
+      displaySlide(slideIndex);
     }
   })
 
@@ -359,19 +349,17 @@ async function init() {
     if (e.key === "ArrowLeft") {
       e.preventDefault();
       console.log('flèche gauche');
-      //btnSliderPrevious1();
-      // btnSliderPrevious.addEventListener('click', () => {
-      //   const position = carrouselPhotos.getAttribute('data-position')
-      //   let slideIndex = parseInt(position)
-        
-      //   if(slideIndex > 0) {
-      //       slideIndex--
-      //   } else {
-      //       slideIndex = newMedias.length - 1
-      //   }
-      //   displaySlide(slideIndex);
-      // })
-      } 
+  
+      const position = carrouselPhotos.getAttribute('data-position')
+      let slideIndex = parseInt(position)
+      
+      if(slideIndex > 0) {
+          slideIndex--
+      } else {
+          slideIndex = newMedias.length - 1
+      }
+      displaySlide(slideIndex);
+    } 
    })
 }
 

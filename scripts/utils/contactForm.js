@@ -27,8 +27,8 @@ function displayModal() {
   myBody.setAttribute('aria-hidden', 'true');
   modal.setAttribute('aria-hidden', 'false');
   
-  document.querySelector('.btnCloseForm').focus()
-  document.querySelector('.btnCloseForm').setAttribute('tabindex', '201')
+  document.querySelector('.btnCloseForm').focus();
+  document.querySelector('.btnCloseForm').setAttribute('tabindex', '201');
 }
 
 function closeModal() {
@@ -44,9 +44,7 @@ function closeModal() {
   myBody.classList.remove("isModalOpen");
   myBody.setAttribute('aria-hidden', 'false');
   modal.setAttribute('aria-hidden', 'true');
-  //modalBtn.focus();
   
-
   resetMyForm();
 }
 
@@ -68,7 +66,7 @@ function checkInputsValidationName(inputName, inputId) {
   } else {
     error.innerHTML = "";
     isInputValid = true;
-  }
+  };
 
   return {
     isInputValid: isInputValid,
@@ -94,7 +92,7 @@ function checkInputValidationEmail() {
   } else {
     error.innerHTML = "Merci de remplir correctement ce champ.";
     isInputValid = false;
-  }
+  };
 
   return {
     isInputValid: isInputValid,
@@ -118,7 +116,7 @@ function checkInputValidationMessage() {
   } else {
     error.innerHTML = "";
     isInputValid = true;
-  }
+  };
 
   return {
     isInputValid: isInputValid,
@@ -161,10 +159,10 @@ openForm.addEventListener("submit", (event) => {
     firstname: firstName.value, 
     lastname: lastName.value, 
     email: email.value,
-    message : message.value,
+    message: message.value,
   }
 
-  console.log(values)
+  console.log(values);
 
   if (
     isFirstNameIsValid.isInputValid &&
@@ -172,14 +170,6 @@ openForm.addEventListener("submit", (event) => {
     isEmailIsValid.isInputValid &&
     isMessageIsValid.isInputValid
   ) {
-    //const openForm = document.querySelector("#openForm");
-    //openForm.classList.add("hidden");
-
-    //const closeForm = document.querySelector(".close");
-    //closeForm.classList.add("active");
-
-    //resetMyForm();
-
     closeModal()
 
     console.log("Le formulaire est bon");
@@ -187,14 +177,13 @@ openForm.addEventListener("submit", (event) => {
   } else {
     error.innerHTML = "Merci de remplir correctement le formulaire.";
     console.log("le formulaire n'est pas bon");
-  }
+  };
 });
 
 // creation of the firstname variable
 inputFirst.addEventListener("input", (event) => {
   event.preventDefault();
 
-  // checkInputFirstName();
   checkInputsValidationName(firstName, "firstNameError");
 });
 
@@ -202,7 +191,6 @@ inputFirst.addEventListener("input", (event) => {
 inputLast.addEventListener("input", (event) => {
   event.preventDefault();
 
-  //checkInputLastName();
   checkInputsValidationName(lastName, "lastNameError");
 });
 

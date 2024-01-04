@@ -263,16 +263,16 @@ function initCarrousel(arrayImg) {
  * @param {*} indexSlide 
  */
 function displaySlide(indexSlide) {
-  const photos = document.querySelectorAll('.carrouselPhoto');
+  const photos = document.querySelectorAll(".carrouselPhoto");
 
   // retire la class='active' de tous les éléments
   for(let i = 0; i < photos.length; i++){
-		photos[i].classList.remove('active')
+		photos[i].classList.remove("active")
 	}
   photos[indexSlide].classList.add("active");
 
   // Sauvegarder la position du carrousel 
-  carrouselPhotos.setAttribute('data-position', indexSlide)
+  carrouselPhotos.setAttribute("data-position", indexSlide)
 }
 
 // function btnSliderPrevious1() {
@@ -304,6 +304,7 @@ async function init() {
   initCarrousel(newMedias);
   displayLikes(newMedias);
 
+  // action sur chevron gauche dans carrousel
   btnSliderPrevious.addEventListener('click', () => {
     const position = carrouselPhotos.getAttribute('data-position')
     let slideIndex = parseInt(position)
@@ -316,18 +317,20 @@ async function init() {
     displaySlide(slideIndex);
   })
 
+  // action sur chevron droite dans carrousel
   btnSliderNext.addEventListener('click', () => {
     const position = carrouselPhotos.getAttribute('data-position')
     let slideIndex = parseInt(position)
 
-      if(slideIndex < newMedias.length - 1) {
-          slideIndex++
-      } else {
-          slideIndex = 0;
-      }
+    if(slideIndex < newMedias.length - 1) {
+        slideIndex++
+    } else {
+        slideIndex = 0;
+    }
     displaySlide(slideIndex);
   })
 
+  // action sur flèche droite dans carrousel
   document.addEventListener('keydown', (e) => { 
     if(e.key === "ArrowRight") {
       e.preventDefault();
@@ -345,6 +348,7 @@ async function init() {
     }
   })
 
+  // action sur flèche gauche dans carrousel
   document.addEventListener('keydown', (e) => {
     if (e.key === "ArrowLeft") {
       e.preventDefault();

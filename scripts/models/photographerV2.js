@@ -18,7 +18,7 @@ function PhotographerV2(data){
        name : data.firstname,
        city : data.localisation.city,
        price : data.price,
-       country : data.localisation.country ,
+       country : data.localisation.country,
        tagline : data.tagline,
        portrait : data.portrait
     }

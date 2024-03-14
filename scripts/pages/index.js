@@ -11,7 +11,7 @@ async function getPhotographers() {
   //console.log(result);
 
   return result;
-}
+};
 
 /**
  * function qui va créer la carte du photographe, avec son nom, prénom, photo, ville, tagline, portrait et TJM

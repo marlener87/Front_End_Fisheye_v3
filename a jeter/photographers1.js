@@ -1,3 +1,36 @@
+// dans un fichier 'mediaFactory.js'
+// function mediaFactory(data, type){
+//     if(type === 'V1'){
+//         return mediaV1(data)
+//     }
+
+//     if(type === 'V2'){
+//         return mediaV2(data)
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Code JavaScript lié à la page photographer.html
 //const photographerID = 930; // Simulation de l'ID de la page de Mimi Keel
 const photographerHeader = document.querySelector(".photograph-header");
@@ -38,8 +71,14 @@ async function getPhotographer() {
 
   let medias = []; // c'est un tableau
   results.media.forEach((itemMedia) => {
-    if (itemMedia.photographerId === photographerID) {
-      medias.push({ ...itemMedia, isLiked: false });
+
+    // FactoryMedia
+    const newMedia = mediaFactory(itemMedia, 'V1');
+
+    //console.log(newMedia)
+
+    if (newMedia.photographerId === photographerID) {
+      medias.push({ ...newMedia, isLiked: false });
     }
   });
 
@@ -71,9 +110,32 @@ function displayMedias(medias) {
   // Réinitialise l'affichage
   mediaPhotos.innerHTML = "";
 
+  let tabIndexMedias = 100;
   // parcours tous les médias, une boucle
   medias.forEach((media, index) => {
-    const cardPhoto = createMedia(media, false);
+    const cardPhoto = document.createElement("div");
+    cardPhoto.classList.add("cardPhoto");
+
+    const mediaContent = media.image
+    ? `<img src="./FishEye_Photos/${photographerID}/${media.image}" alt="image ${media.title}" id="photo ${media.id}" class="photo">` 
+    : `<video class="photo">
+      <source src="./FishEye_Photos/${photographerID}/${media.video}" type="video/mp4" alt="${media.title}">
+      Votre navigateur ne prend pas en charge ce type de vidéo.
+    </video>`;
+
+    cardPhoto.innerHTML = `
+    <button class="imagePhotographe" id="imagePhotographe" tabindex="${tabIndexMedias++}">${mediaContent}</button>
+    <div class="infoPhoto">
+      <h2 id="titre" tabindex="${tabIndexMedias++}">${media.title}</h2>
+      <div class="likes" aria-label="nombre de likes total sur cette image" tabindex="${tabIndexMedias++}">
+        <span class="card-likes" data-id="${media.id}" tabindex="${tabIndexMedias++}">${media.likes}</span>
+        <button class="btnLike ${media.isLiked ? "isLiked" : ""}" data-id="${media.id}" tabindex="${tabIndexMedias++}" aria-label="coeur like">
+          <i class="fa-regular fa-heart"></i>
+          <i class="fa-solid fa-heart fa-coeur"></i>
+        </button>
+      </div>
+    </div> `;
+    //console.log(cardPhoto);
     mediaPhotos.appendChild(cardPhoto);
 
     cardPhoto.addEventListener('click', () => {

@@ -41,9 +41,6 @@ function displayPhotographers(objectPhotographers) {
         <p class="price">${photographer.price}€/jour</p>
     `;
 
-    // aria-label="localisation du photographe : ${photographer.city}, ${photographer.country}" tabindex="${tabindexCounter++}"
-    // aria-label="citation du photographe : ${photographer.tagline}" tabindex="${tabindexCounter++}"
-    // aria-label="tarif à la journée du photographe : ${photographer.price}€ par jour" tabindex="${tabindexCounter++}"
     // Ajout de la div dans le DOM
     photographersSection.appendChild(divCard);
   });
@@ -58,4 +55,3 @@ async function init() {
 }
 
 init();
-

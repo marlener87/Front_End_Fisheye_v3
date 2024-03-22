@@ -71,12 +71,9 @@ async function getPhotographer() {
 
   let medias = []; // c'est un tableau
   results.media.forEach((itemMedia) => {
-
     // FactoryMedia
     const newMedia = mediaFactory(itemMedia, 'V1');
-
     //console.log(newMedia)
-
     if (newMedia.photographerId === photographerID) {
       medias.push({ ...newMedia, isLiked: false });
     }

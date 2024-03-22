@@ -1,6 +1,7 @@
-function createMedia(data, liked) {
-    let tabIndexMedias = 100;
-    const { title, id, image, video, likes, photographerId } = data;
+let tabIndexMedias = 100;
+function createMedia(data, liked) {     // data représente un objet media (dans json), liked correspond à isLiked booléen qui est initialisé à 'false' dans photographer.js
+    
+    const { title, id, image, video, likes, photographerId } = data;    // destructuring    remplace const title = data.title;
     let isLiked = liked;
     const cardPhoto = document.createElement("div");
     cardPhoto.classList.add("cardPhoto");
@@ -16,7 +17,7 @@ function createMedia(data, liked) {
     <button class="imagePhotographe" id="imagePhotographe" tabindex="${tabIndexMedias++}">${mediaContent}</button>
     <div class="infoPhoto">
       <h2 id="titre" tabindex="${tabIndexMedias++}">${title}</h2>
-      <div class="likes" aria-label="nombre de likes total sur cette image" tabindex="${tabIndexMedias++}">
+      <div class="likes" aria-label="nombre de likes total sur cette image">
         <span class="card-likes" data-id="${id}" tabindex="${tabIndexMedias++}">${likes}</span>
         <button class="btnLike ${isLiked ? "isLiked" : ""}" data-id="${id}" tabindex="${tabIndexMedias++}" aria-label="coeur like">
           <i class="fa-regular fa-heart"></i>

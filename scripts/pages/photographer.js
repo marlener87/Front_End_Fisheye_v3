@@ -8,10 +8,15 @@ const totalLikesDOM = document.querySelector("#totalLikes");
 const carrouselPhotos = document.querySelector(".containerCarrousel");
 const btnSliderNext = document.querySelector(".chevronD");
 const btnSliderPrevious = document.querySelector(".chevronG");
+const userName = document.querySelector("#userName");
+const userCity = document.querySelector("#userCity");
+const userTagline = document.querySelector("#userTagline");
+const userImage = document.getElementById("userImage");
 
 let orderByType = "popularity"; 
 const btnList = document.querySelectorAll(".btnSelect");
 
+let medias = []; // c'est un tableau
 // Function pour récupérer avec un fetch (attention await/async) les données de tous les photographes
 // Au lieu de retourner tous les photographes, retourne uniquement celui qui à le bon ID photographerID
 
@@ -27,16 +32,18 @@ async function getPhotographer() {
 
   let photographer = null; // c'est un objet
   results.photographers.forEach((item) => {
+    // en passant par FactoryPhotographer
+    //const newItem = PhotographerFactory(item, 'V1')
+    // if (newItem.id === photographerID) {
+    //   photographer = newItem;
+    // };
 
-    // FactoryPhotographer
-    const newItem = PhotographerFactory(item, 'V1')
-
-    if (newItem.id === photographerID) {
-      photographer = newItem;
-    };
+    if (item.id === photographerID) {
+      photographer = item
+    }
   });
 
-  let medias = []; // c'est un tableau
+  medias = []; // c'est un tableau
   results.media.forEach((itemMedia) => {
     if (itemMedia.photographerId === photographerID) {
       medias.push({ ...itemMedia, isLiked: false });
@@ -72,6 +79,7 @@ function displayMedias(medias) {
   mediaPhotos.innerHTML = "";
 
   // parcours tous les médias, une boucle
+  // on appelle la factory 'createMedia' qui est dans mediaFactory.js
   medias.forEach((media, index) => {
     const cardPhoto = createMedia(media, false);
     mediaPhotos.appendChild(cardPhoto);
@@ -81,14 +89,17 @@ function displayMedias(medias) {
       displayCarrousel();
     })
 
-    const btn = document.querySelector(`.btnLike[data-id="${media.id}"]`);
-    const cardLikes = document.querySelector(`.card-likes[data-id="${media.id}"]`);
+    const btn = document.querySelector(`.btnLike[data-id="${media.id}"]`);  // correspond au coeur
+    const cardLikes = document.querySelector(`.card-likes[data-id="${media.id}"]`); //correspond au nombre de likes sur l'image
 
     // bouton coeur, ajoute ou retire 1, colore ou retire la couleur du coeur
     btn.addEventListener("click", (event) => {
       event.stopPropagation();
       
+      // booléen, si on clique dessus, mettre l'inverse le true passe à false et inversement (v l 48, initialisé à false)
       media.isLiked = !media.isLiked;
+
+      // incrémente ou décrémente le nombre de likes de l'image
       // c'est une ternaire
       //cardLikes.innerHTML = media.isLiked ? media.likes + 1 : media.likes;
       if (media.isLiked) {
@@ -102,6 +113,7 @@ function displayMedias(medias) {
       if(media.isLiked === false) équivaut à if(!media.isLiked)
       */
 
+      // met le coeur vide ou le coeur rempli (style.css)
       if (media.isLiked === true) {
         if (btn.classList.contains("isLiked") === false) {
           btn.classList.add("isLiked");
@@ -132,15 +144,10 @@ function displayLikes(medias) {
   totalLikesDOM.innerHTML = likes;
 }
 
-/////// TRI DES MEDIAS
+/////// TRI DES MEDIAS /////////////////////////////////////////////
 btnList.forEach((btn) => {
-  btn.addEventListener("click", async (e) => {
-    e.preventDefault();
-
+  btn.addEventListener("click", () => {
     orderByType = btn.getAttribute("data-value");
-
-    // récupère les médias = simulation de l'API
-    const { medias } = await getPhotographer();
 
     // va trier le tableau des médias avec le new orderByType
     const newMedias = orderBy(medias);
@@ -197,6 +204,7 @@ function orderBy(mediasToSort) {
   return mediasSorted;
 }
 
+////////////////////////// CARROUSEL ////////////////////////////////////////
 /**
  * on ajoute toutes les images au carrousel et on les met sans la class='active'
  * @param {*} arrayImg 
@@ -245,23 +253,6 @@ function displaySlide(indexSlide) {
   // Sauvegarder la position du carrousel 
   carrouselPhotos.setAttribute("data-position", indexSlide)
 }
-
-// function btnSliderPrevious1() {
-//   btnSliderPrevious.addEventListener('click', () => {
-//     const position = carrouselPhotos.getAttribute('data-position')
-//     let slideIndex = parseInt(position)
-    
-//     if(slideIndex > 0) {
-//         slideIndex--
-//     } else {
-//         slideIndex = newMedias.length - 1
-//     }
-//     displaySlide(slideIndex);
-//   })
-
-// }
-
-
 
 /**
  * function qui initialise toutes les functions

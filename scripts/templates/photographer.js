@@ -1,3 +1,5 @@
+///// Donné dans le projet pour initier la page
+
 function photographerTemplate(data) {
     const { name, portrait } = data;
 

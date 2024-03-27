@@ -72,6 +72,7 @@ function displayPhotographer(insertPhotographer) {
 // paramètre : permet de transmettre des infos de l'extérieur
 /**
  * function qui affiche les medias du photographe, création de la page en JS
+ * appelle la factory mediaFactory.js
  * @param {*} medias 
  */
 function displayMedias(medias) {
@@ -84,6 +85,7 @@ function displayMedias(medias) {
     const cardPhoto = createMedia(media, false);
     mediaPhotos.appendChild(cardPhoto);
 
+    // au clique sur la photo, le carrousel s'ouvre
     cardPhoto.addEventListener('click', () => {
       displaySlide(index);
       displayCarrousel();

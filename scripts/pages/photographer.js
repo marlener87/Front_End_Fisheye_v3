@@ -92,6 +92,7 @@ function displayMedias(medias) {
       displayCarrousel();
     })
 
+    ///////// NOMBRE DE LIKE ET COEUR ///////////////////
     const btn = document.querySelector(`.btnLike[data-id="${media.id}"]`);  // correspond au coeur
     const cardLikes = document.querySelector(`.card-likes[data-id="${media.id}"]`); //correspond au nombre de likes sur l'image
 

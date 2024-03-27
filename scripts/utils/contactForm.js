@@ -10,8 +10,6 @@ const email = document.querySelector("#email");
 const message = document.querySelector("#message");
 
 //let input = document.querySelectorAll("input");
-// création de la variable qui récupère les données de l'input
-//let inputValue = "";
 
 //let btnSubmitValidationForm = document.querySelector("#button");
 let inputFirst = document.querySelector("#firstName");
@@ -213,14 +211,3 @@ modalBtn.forEach((btn) => btn.addEventListener("click", displayModal));
 
 // close modal event
 btnCloseForm.forEach((btn) => btn.addEventListener("click", closeModal));
-
-
-// ACCESSIBILITE
-// document.on('keydown', e => {
-//   const keyCode = e.keyCode ? e.keyCode : e.which
-
-//   if(modal.setAttribute('aria-hidden') == 'false' && keyCode === 27) {
-//     closeModal
-//   }
-// })
-

@@ -9,7 +9,6 @@ async function getPhotographers() {
     return res.json(); // obtenir les résultats
   });
   //console.log(result);
-
   return result;
 }
 
@@ -20,15 +19,13 @@ async function getPhotographers() {
 function displayPhotographers(objectPhotographers) {
   let tabindexCounter = 100;
   objectPhotographers.photographers.forEach((item) => {
-
-    // passer ces résultats dans un pipeline => ce truc me retourne TOUJOURS le même object
+    // passer ces résultats dans un pipeline => me retourne TOUJOURS le même object
     const photographer = PhotographerFactory(item, 'V1');
 
     // Création d'une nouvelle div
     const divCard = document.createElement("div"); 
     divCard.classList.add("card");
     divCard.setAttribute("aria-label", "portrait et nom du photographe");
-  //divCard.setAttribute("tabindex", tabindexCounter++);
 
     // Modification du contenu de la nouvelle div
     divCard.innerHTML = `

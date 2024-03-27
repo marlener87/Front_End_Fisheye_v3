@@ -1,6 +1,6 @@
 // Code JavaScript lié à la page photographer.html
 //const photographerID = 930; // Simulation de l'ID de la page de Mimi Keel
-const photographerHeader = document.querySelector(".photograph-header");
+//const photographerHeader = document.querySelector(".photograph-header");
 const url = new URL(document.location.href);
 const photographerID = parseInt(url.searchParams.get("id"));
 const mediaPhotos = document.querySelector("#mediaPhotos");
@@ -12,6 +12,7 @@ const userName = document.querySelector("#userName");
 const userCity = document.querySelector("#userCity");
 const userTagline = document.querySelector("#userTagline");
 const userImage = document.getElementById("userImage");
+const tjm = document.getElementById("tjm");
 
 let orderByType = "popularity"; 
 const btnList = document.querySelectorAll(".btnSelect");
@@ -108,7 +109,7 @@ function displayMedias(medias) {
         cardLikes.innerHTML = media.likes + 1;
       } else {
         cardLikes.innerHTML = media.likes;
-      };
+      }
 
       /*
       if(media.isLiked === true) équivaut à if(media.isLiked)
@@ -122,7 +123,7 @@ function displayMedias(medias) {
         }
       } else {
         btn.classList.remove("isLiked");
-      };
+      }
 
       displayLikes(medias);
     });

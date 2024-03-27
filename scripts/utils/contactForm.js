@@ -9,11 +9,11 @@ const lastName = document.querySelector("#lastName");
 const email = document.querySelector("#email");
 const message = document.querySelector("#message");
 
-let input = document.querySelectorAll("input");
+//let input = document.querySelectorAll("input");
 // création de la variable qui récupère les données de l'input
 //let inputValue = "";
 
-let btnSubmitValidationForm = document.querySelector("#button");
+//let btnSubmitValidationForm = document.querySelector("#button");
 let inputFirst = document.querySelector("#firstName");
 let inputLast = document.querySelector("#lastName");
 let inputEmail = document.querySelector("#email");
@@ -66,7 +66,7 @@ function checkInputsValidationName(inputName, inputId) {
   } else {
     error.innerHTML = "";
     isInputValid = true;
-  };
+  }
 
   return {
     isInputValid: isInputValid,
@@ -92,7 +92,7 @@ function checkInputValidationEmail() {
   } else {
     error.innerHTML = "Merci de remplir correctement ce champ.";
     isInputValid = false;
-  };
+  }
 
   return {
     isInputValid: isInputValid,
@@ -116,7 +116,7 @@ function checkInputValidationMessage() {
   } else {
     error.innerHTML = "";
     isInputValid = true;
-  };
+  }
 
   return {
     isInputValid: isInputValid,
@@ -177,7 +177,7 @@ openForm.addEventListener("submit", (event) => {
   } else {
     error.innerHTML = "Merci de remplir correctement le formulaire.";
     console.log("le formulaire n'est pas bon");
-  };
+  }
 });
 
 // creation of the firstname variable

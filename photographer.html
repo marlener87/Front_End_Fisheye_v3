@@ -19,16 +19,16 @@
     </a>
   </header>
   <main id="main">
-    <!-- DESCRIPTION ET CONTACT DU PHOTOGRAPHE -->
+    <!-- DESCRIPTION ET CONTACT DU PHOTOGRAPHE tabindex="3"tabindex="4" tabindex="5"-->
     <section class="photograph-header" aria-label="description et contact du photographe" tabindex="2">
       <div class="descriptif">
-        <h1 class="name" id="userName" tabindex="3"></h1>
-        <p class="city" id="userCity" tabindex="4"></p>
-        <p class="userTagline" id="userTagline" tabindex="5"></p>
+        <h1 class="name" id="userName"></h1>
+        <p class="city" id="userCity"></p>
+        <p class="userTagline" id="userTagline"></p>
       </div>
-      <button class="contact_button open" tabindex="6" onclick="displayModal()">Contactez-moi</button>
+      <button class="contact_button open" tabindex="3" onclick="displayModal()">Contactez-moi</button>
       <div class="photographerImage">
-        <img src="" alt="" id="userImage" tabindex="7">
+        <img src="" alt="" id="userImage" tabindex="4">
       </div>
     </section>
 
@@ -80,13 +80,13 @@
   <!-- ENCART CARROUSEL  style="display: block;"-->
   <section class="carrousel" id="carrousel" aria-label="carrousel">
     <div class="containerCarrousel"></div>
-    <button class="closeCarrousel" tabindex="300">x
+    <button class="closeCarrousel" aria-label="fermer carrousel" tabindex="300">x
       <!--<i class="fa-solid fa-xmark"aria-label="fermer le carrousel"></i>-->
     </button>
-    <button class="chevron chevronG" tabindex="301">
+    <button class="chevron chevronG" aria-label="précédent" tabindex="301">
       &lt; <!--<i class="fa-solid fa-chevron-left" aria-label="image précédente"></i>-->
     </button>
-    <button class="chevron chevronD" tabindex="303">>
+    <button class="chevron chevronD" aria-label="suivant" tabindex="303">>
       <!--<i class="fa-solid fa-chevron-right" aria-label="image suivante"></i>-->
     </button>
   </section>

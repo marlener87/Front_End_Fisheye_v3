@@ -16,7 +16,7 @@ function createMedia(data, liked) {     // data représente un objet media (dans
     cardPhoto.innerHTML = `
     <button class="imagePhotographe" id="imagePhotographe" tabindex="${tabIndexMedias++}">${mediaContent}</button>
     <div class="infoPhoto">
-      <h2 id="titre" tabindex="${tabIndexMedias++}">${title}</h2>
+      <h2 id="titre" >${title}</h2>
       <div class="likes" aria-label="nombre de likes total sur cette image">
         <span class="card-likes" data-id="${id}" tabindex="${tabIndexMedias++}">${likes}</span>
         <button class="btnLike ${isLiked ? "isLiked" : ""}" data-id="${id}" tabindex="${tabIndexMedias++}" aria-label="coeur like">

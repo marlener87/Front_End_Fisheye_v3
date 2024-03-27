@@ -65,7 +65,7 @@ function displayPhotographer(insertPhotographer) {
   userTagline.innerHTML = insertPhotographer.tagline;
 
   userImage.src = `./assets/PhotographersIDPhotos/${insertPhotographer.portrait}`;
-  userImage.alt = `Portrait du photographe ${insertPhotographer.name}`;
+  userImage.alt = `Portrait du photographe ${insertPhotographer.name}, ${insertPhotographer.city}, ${insertPhotographer.country}, ${insertPhotographer.tagline}`;
   // afficher le prix tjm
   tjm.innerHTML = `${insertPhotographer.price}€ / jour`;
 }
